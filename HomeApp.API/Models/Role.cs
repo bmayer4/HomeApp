@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace HomeApp.API.Models
 {
-    public class Role: IdentityRole
+    public class Role: IdentityRole<int>
     {
         public ICollection<UserRole> UserRoles { get; set; }
     }
