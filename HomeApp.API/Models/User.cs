@@ -10,5 +10,7 @@ namespace HomeApp.API.Models
         public string City { get; set; }
         public string Country { get; set; }
         public ICollection<UserRole> UserRoles { get; set; }
+        public DateTime Created { get; set; }
+        public ICollection<Home> Homes { get; set; } = new List<Home>();
     }
 }

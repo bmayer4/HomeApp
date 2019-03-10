@@ -5,6 +5,11 @@ namespace HomeApp.API.Dtos
 {
     public class UserForRegisterDto
     {
+        public UserForRegisterDto()
+        {
+            Created = DateTime.Now;
+        }
+
         [Required]
         public string UserName { get; set; }
 
@@ -20,5 +25,7 @@ namespace HomeApp.API.Dtos
 
         [Required]
         public DateTime DateOfBirth { get; set; }
+
+        public DateTime Created { get; set; }
     }
 }

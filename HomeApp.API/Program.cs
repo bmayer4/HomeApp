@@ -17,7 +17,7 @@ namespace HomeApp.API
         public static void Main(string[] args)
         {
             //CreateWebHostBuilder(args).Build().Run();
-
+ 
             //used below for seeding
             var host = CreateWebHostBuilder(args).Build();
 

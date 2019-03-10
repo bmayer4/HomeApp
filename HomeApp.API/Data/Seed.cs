@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using HomeApp.API.Models;
 using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json;
 
 namespace HomeApp.API.Data
 {
@@ -10,15 +12,19 @@ namespace HomeApp.API.Data
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
 
-        public Seed(UserManager<User> userManager, RoleManager<Role> roleManager)
+        private readonly AppDbContext _context;
+
+        public Seed(UserManager<User> userManager, RoleManager<Role> roleManager, AppDbContext context)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _context = context;
         }
 
         public void SeedUsers() 
         {
             if (!_userManager.Users.Any()) {  
+
                 var roles = new List<Role> {
                     new Role() { Name = "Member" },
                     new Role() { Name = "Admin" },
@@ -30,7 +36,8 @@ namespace HomeApp.API.Data
 
                 var user = new User()
                 {
-                    UserName = "Admin"
+                    UserName = "Admin",
+                    Created = DateTime.Now
                 };
 
                 IdentityResult result = _userManager.CreateAsync(user, "password123").Result;
@@ -40,6 +47,15 @@ namespace HomeApp.API.Data
                     var admin = _userManager.FindByNameAsync("Admin").Result;
                     _userManager.AddToRolesAsync(admin, new[] { "Admin", "Member" }).Wait();
                 }
+            }
+
+            if (!_context.Homes.Any())
+            {
+                var homeData = System.IO.File.ReadAllText("Data/HomeSeedData.json");
+                var homes = JsonConvert.DeserializeObject<List<Home>>(homeData);
+
+            _context.AddRange(homes);
+            _context.SaveChanges();
             }
     }
     

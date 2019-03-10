@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HomeApp.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190304163941_identityadd")]
-    partial class identityadd
+    [Migration("20190309140849_proptophotos")]
+    partial class proptophotos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,64 @@ namespace HomeApp.API.Migrations
                 .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("HomeApp.API.Models.Home", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Bathrooms");
+
+                    b.Property<int>("Bedrooms");
+
+                    b.Property<string>("City");
+
+                    b.Property<DateTime>("DateAdded");
+
+                    b.Property<int>("Price");
+
+                    b.Property<bool>("Renevated");
+
+                    b.Property<string>("SchoolRating");
+
+                    b.Property<int>("SquareFeet");
+
+                    b.Property<string>("State");
+
+                    b.Property<string>("Street");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Homes");
+                });
+
+            modelBuilder.Entity("HomeApp.API.Models.Photo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateAdded");
+
+                    b.Property<int>("HomeId");
+
+                    b.Property<bool>("IsCover");
+
+                    b.Property<string>("PublicId");
+
+                    b.Property<string>("Url");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HomeId");
+
+                    b.ToTable("Photos");
+                });
 
             modelBuilder.Entity("HomeApp.API.Models.Role", b =>
                 {
@@ -60,6 +118,8 @@ namespace HomeApp.API.Migrations
                         .IsConcurrencyToken();
 
                     b.Property<string>("Country");
+
+                    b.Property<DateTime>("Created");
 
                     b.Property<DateTime>("DateOfBirth");
 
@@ -193,6 +253,22 @@ namespace HomeApp.API.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("HomeApp.API.Models.Home", b =>
+                {
+                    b.HasOne("HomeApp.API.Models.User", "User")
+                        .WithMany("Homes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("HomeApp.API.Models.Photo", b =>
+                {
+                    b.HasOne("HomeApp.API.Models.Home", "Home")
+                        .WithMany("Photos")
+                        .HasForeignKey("HomeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("HomeApp.API.Models.UserRole", b =>

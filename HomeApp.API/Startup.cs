@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using HomeApp.API.Data;
+using HomeApp.API.Helpers;
 using HomeApp.API.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -25,12 +26,15 @@ namespace HomeApp.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            Env = env;
         }
 
         public IConfiguration Configuration { get; }
+        public IConfigurationBuilder CB { get; }
+        private IHostingEnvironment Env { get; set; }
 
         // this method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -39,6 +43,8 @@ namespace HomeApp.API
             services.AddDbContext<AppDbContext>(o => o.UseSqlServer(cs));
 
             services.AddTransient<Seed>();  // now creatable through DI
+            services.AddScoped<IHomeRepository, HomeRepository>();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             
             IdentityBuilder builder = services.AddIdentityCore<User>(opt => {
                 opt.Password.RequireNonAlphanumeric = false;
@@ -73,7 +79,7 @@ namespace HomeApp.API
             .AddJsonOptions(opt => {
                     opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });;
-
+            if (Env.IsDevelopment()) { Mapper.Reset(); }
             services.AddAutoMapper();
         }
 

@@ -10,6 +10,13 @@ namespace HomeApp.API.Helpers
         {
             // source to dest
             CreateMap<UserForRegisterDto, User>();
+            CreateMap<User, UserToReturnDto>();
+            CreateMap<Home, HomeForDetailDto>();
+            CreateMap<Home, HomeForListDto>();
+            CreateMap<HomeForCreationDto, Home>();
+            CreateMap<HomeForUpdateDto, Home>();
+            CreateMap<PhotoForCreationDto, Photo>();
+             CreateMap<Photo, PhotoForReturnDto>();
         }   
     }
 }

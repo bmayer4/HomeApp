@@ -1,0 +1,192 @@
+[
+  {
+    "street": "Crooke Avenue",
+    "city": "Olney",
+    "state": "Arizona",
+    "price": 432611,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "squareFeet": 3907,
+    "renevated": true,
+    "schoolRating": "C",
+    "dateAdded": "2014-12-17",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://unsplash.com/photos/1ddol8rgUH8",
+        "isCover": true
+      }
+    ]
+  },
+  {
+    "street": "Monitor Street",
+    "city": "Kapowsin",
+    "state": "Federated States Of Micronesia",
+    "price": 462668,
+    "bedrooms": 1,
+    "bathrooms": 4,
+    "squareFeet": 2398,
+    "renevated": true,
+    "schoolRating": "C",
+    "dateAdded": "2016-11-02",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://unsplash.com/photos/1ddol8rgUH8",
+        "isCover": true
+      }
+    ]
+  },
+  {
+    "street": "Neptune Court",
+    "city": "Outlook",
+    "state": "Maine",
+    "price": 365926,
+    "bedrooms": 5,
+    "bathrooms": 2,
+    "squareFeet": 3347,
+    "renevated": false,
+    "schoolRating": "A",
+    "dateAdded": "2015-05-16",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://unsplash.com/photos/1ddol8rgUH8",
+        "isCover": true
+      }
+    ]
+  },
+  {
+    "street": "Ridge Court",
+    "city": "Tolu",
+    "state": "Indiana",
+    "price": 340445,
+    "bedrooms": 5,
+    "bathrooms": 1,
+    "squareFeet": 4089,
+    "renevated": false,
+    "schoolRating": "A",
+    "dateAdded": "2015-10-27",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://unsplash.com/photos/1ddol8rgUH8",
+        "isCover": true
+      }
+    ]
+  },
+  {
+    "street": "Rewe Street",
+    "city": "Utting",
+    "state": "Louisiana",
+    "price": 175444,
+    "bedrooms": 5,
+    "bathrooms": 1,
+    "squareFeet": 1434,
+    "renevated": true,
+    "schoolRating": "B",
+    "dateAdded": "2017-08-08",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://unsplash.com/photos/1ddol8rgUH8",
+        "isCover": true
+      }
+    ]
+  },
+  {
+    "street": "Schenck Court",
+    "city": "Dexter",
+    "state": "South Carolina",
+    "price": 336883,
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "squareFeet": 3976,
+    "renevated": true,
+    "schoolRating": "A",
+    "dateAdded": "2016-04-02",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://unsplash.com/photos/1ddol8rgUH8",
+        "isCover": true
+      }
+    ]
+  },
+  {
+    "street": "Dewitt Avenue",
+    "city": "Shaft",
+    "state": "New York",
+    "price": 476776,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "squareFeet": 2471,
+    "renevated": true,
+    "schoolRating": "B",
+    "dateAdded": "2014-01-30",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://unsplash.com/photos/1ddol8rgUH8",
+        "isCover": true
+      }
+    ]
+  },
+  {
+    "street": "Whitney Avenue",
+    "city": "Smeltertown",
+    "state": "New Mexico",
+    "price": 242796,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "squareFeet": 1000,
+    "renevated": false,
+    "schoolRating": "C",
+    "dateAdded": "2017-09-21",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://unsplash.com/photos/1ddol8rgUH8",
+        "isCover": true
+      }
+    ]
+  },
+  {
+    "street": "Ira Court",
+    "city": "Campo",
+    "state": "New Hampshire",
+    "price": 514449,
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "squareFeet": 3708,
+    "renevated": false,
+    "schoolRating": "B",
+    "dateAdded": "2015-07-26",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://unsplash.com/photos/1ddol8rgUH8",
+        "isCover": true
+      }
+    ]
+  },
+  {
+    "street": "Debevoise Street",
+    "city": "Adelino",
+    "state": "Kentucky",
+    "price": 501746,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "squareFeet": 1302,
+    "renevated": false,
+    "schoolRating": "A",
+    "dateAdded": "2016-10-17",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://unsplash.com/photos/1ddol8rgUH8",
+        "isCover": true
+      }
+    ]
+  }
+]

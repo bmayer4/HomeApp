@@ -26,29 +26,27 @@ namespace HomeApp.API.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IMapper _mapper;
-        private readonly AppDbContext _context;
+        private readonly IHomeRepository _repo;
         private readonly IConfiguration _config;
-        public AuthController(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper, AppDbContext context, IConfiguration config)
+        public AuthController(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper, IHomeRepository repo, IConfiguration config)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _mapper = mapper;
-            _context = context;
+            _repo = repo;
             _config = config;
         }
 
         [HttpGet("users/{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {
-            // TODO - change code when we add repo
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _repo.GetUser(id);
             if (user == null)
             {
                 return NotFound();
             }
 
              var userToReturn = _mapper.Map<UserToReturnDto>(user);
-
             
             return Ok(userToReturn);
         }
