@@ -11,6 +11,8 @@ namespace HomeApp.API.Dtos
         }
 
         [Required]
+        [EmailAddress]
+        public string Email { get; set; }
         public string UserName { get; set; }
 
         [Required]
@@ -25,6 +27,11 @@ namespace HomeApp.API.Dtos
 
         [Required]
         public DateTime DateOfBirth { get; set; }
+        
+        public int MyProperty { get; set; }
+
+        [Required]
+        public bool IsProfessional { get; set; } 
 
         public DateTime Created { get; set; }
     }

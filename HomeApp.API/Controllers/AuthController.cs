@@ -37,19 +37,19 @@ namespace HomeApp.API.Controllers
             _config = config;
         }
 
-        [HttpGet("users/{id}", Name = "GetUser")]
-        public async Task<IActionResult> GetUser(int id)
-        {
-            var user = await _repo.GetUser(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+        // [HttpGet("users/{id}", Name = "GetUser")]
+        // public async Task<IActionResult> GetUser(int id)
+        // {
+        //     var user = await _repo.GetUser(id);
+        //     if (user == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-             var userToReturn = _mapper.Map<UserToReturnDto>(user);
+        //      var userToReturn = _mapper.Map<UserToReturnDto>(user);
             
-            return Ok(userToReturn);
-        }
+        //     return Ok(userToReturn);
+        // }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserForRegisterDto userForRegisterDto)
@@ -58,15 +58,29 @@ namespace HomeApp.API.Controllers
                 return BadRequest(ModelState);
             }
 
+            userForRegisterDto.UserName = userForRegisterDto.Email;
+
             var userToCreate = _mapper.Map<User>(userForRegisterDto);
 
             var result = await _userManager.CreateAsync(userToCreate, userForRegisterDto.Password);
-
+  
             if (result.Succeeded)
             {
+
+                if (userToCreate.Email != null)
+                {
+                    userToCreate.EmailConfirmed = true;
+                }
+
                 var userToReturn = _mapper.Map<UserToReturnDto>(userToCreate);
-                await _userManager.AddToRoleAsync(userToCreate, "Member");
-                return CreatedAtRoute("GetUser", new { id = userToCreate.Id }, userToReturn);
+                if (userToCreate.IsProfessional)
+                {
+                    await _userManager.AddToRolesAsync(userToCreate, new[] {"Professional", "Member"});
+                } else {
+                    await _userManager.AddToRoleAsync(userToCreate, "Member");
+                }
+                
+                return CreatedAtRoute("GetUser", new { controller = "users",  id = userToCreate.Id }, userToReturn);
             }
 
             return BadRequest(result.Errors);
@@ -78,15 +92,16 @@ namespace HomeApp.API.Controllers
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
+        
+            var user = await _userManager.FindByEmailAsync(userForLoginDto.Email.Normalize());
 
-            var user = await _userManager.FindByNameAsync(userForLoginDto.UserName);
 
             if (user == null) 
             {
-                return UnprocessableEntity("Invalid Username or Password");
+                return UnprocessableEntity("Invalid Email or Password");
             }
 
-            // invalid username returns 500 server error without above check
+            // invalid email returns 500 server error without above check
             var result = await _signInManager.CheckPasswordSignInAsync(user, userForLoginDto.Password, false);
 
             if (result.Succeeded)
@@ -98,7 +113,7 @@ namespace HomeApp.API.Controllers
                 });
             }
 
-            return UnprocessableEntity("Invalid Username or Password");  // stack overflow recommends 422 for failed login credentials
+            return UnprocessableEntity("Invalid Email or Password");  // stack overflow recommends 422 for failed login credentials
         }
 
         private async Task<string> GenerateJwtToken(User user)
@@ -106,7 +121,7 @@ namespace HomeApp.API.Controllers
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),  //in token as nameid
-                new Claim(ClaimTypes.Name, user.UserName)  //in token as unique_name
+                new Claim(ClaimTypes.Email, user.Email)
             };
 
             var roles = await _userManager.GetRolesAsync(user);

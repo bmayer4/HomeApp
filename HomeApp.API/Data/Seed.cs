@@ -27,6 +27,7 @@ namespace HomeApp.API.Data
 
                 var roles = new List<Role> {
                     new Role() { Name = "Member" },
+                    new Role() { Name = "Professional" },
                     new Role() { Name = "Admin" },
                 };
 
@@ -36,16 +37,24 @@ namespace HomeApp.API.Data
 
                 var user = new User()
                 {
-                    UserName = "Admin",
-                    Created = DateTime.Now
+                    Created = DateTime.Now,
+                    IsProfessional = true,
+                    EmailConfirmed = true,
+                    Email = "admin@admin.com",
+                    UserName = "admin@admin.com",  //REQUIRED
                 };
 
                 IdentityResult result = _userManager.CreateAsync(user, "password123").Result;
 
                 if (result.Succeeded)
                 {
-                    var admin = _userManager.FindByNameAsync("Admin").Result;
-                    _userManager.AddToRolesAsync(admin, new[] { "Admin", "Member" }).Wait();
+                    var admin = _userManager.FindByEmailAsync("admin@admin.com".Normalize()).Result;
+                    if (admin == null) {
+                        Console.Write("itz", admin.NormalizedEmail);
+                    }
+                    _userManager.AddToRolesAsync(admin, new[] { "Admin", "Professional", "Member" }).Wait();
+                } else {
+                    Console.Write("NOOOO!");
                 }
             }
 

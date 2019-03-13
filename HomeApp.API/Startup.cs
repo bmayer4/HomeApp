@@ -70,6 +70,7 @@ namespace HomeApp.API
 
             services.AddAuthorization(opts => {
                 opts.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+                opts.AddPolicy("RequireProfessionalRole", policy => policy.RequireRole("Admin", "Professional"));
             });
         
             services.AddMvc(opt => {

@@ -11,6 +11,7 @@ namespace HomeApp.API.Models
         public string Country { get; set; }
         public ICollection<UserRole> UserRoles { get; set; }
         public DateTime Created { get; set; }
+        public bool IsProfessional { get; set; } 
         public ICollection<Home> Homes { get; set; } = new List<Home>();
     }
 }

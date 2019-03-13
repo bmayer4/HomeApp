@@ -13,7 +13,9 @@ namespace HomeApp.API.Dtos
         public int Price { get; set; }
         public int Bedrooms { get; set; }
         public int Bathrooms { get; set; }
+        public int DaysOnMarket { get; set; }
         public int SquareFeet { get; set; }
-        public string CoverUrl { get; set; }  //TODO 
+        public string CoverUrl { get; set; }
+        public int NumberOfPhotos { get; set; }
     }
 }
