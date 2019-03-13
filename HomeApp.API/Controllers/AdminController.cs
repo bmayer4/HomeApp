@@ -72,7 +72,7 @@ namespace HomeApp.API.Controllers
                 }
             }
 
-            if (selectedRoles.IndexOf("Member") == -1)
+            if (!selectedRoles.Contains("Member"))
             {
                 selectedRoles.Add("Member");
             }
