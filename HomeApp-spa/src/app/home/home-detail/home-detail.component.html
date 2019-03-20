@@ -1,8 +1,10 @@
 <div class="my-5">
   <div class="container">
     <div class="row">
-      <div class=" col-md-8 m-auto home-detail-img">
-          <img src="{{ home?.coverUrl }}" alt="{{ home?.street }}" class="img-fluid rounded">
+      <div class="col-md-8 m-auto home-detail-img">
+          <!-- <img src="{{ home.coverUrl }}" alt="{{ home.street }}" class="img-fluid rounded"> -->
+          <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+
       </div>
     </div>
 
@@ -10,28 +12,28 @@
       <h4 class="pb-1">Details</h4>
         <div class="d-flex justify-content-between">
           <div class="home-details-loc">
-            <div class="price text-dark">{{ home?.price | currency : 'USD' : 'symbol' : '1.0' }}
+            <div class="price text-dark">{{ home.price | currency : 'USD' : 'symbol' : '1.0' }}
               <span class="text-primary calc px-1">see our mortgage calculator <i class="fa fa-calculator"></i></span>
             </div>
-            <div>{{ home?.street }}</div>
-            <span>{{ home?.city }},</span>
-            <span>&nbsp;{{ home?.state }}</span>
-            <div>Days on market: <span class="text-dark">{{ home?.daysOnMarket }}</span></div>
-            <div>School rating: <span class="text-dark">{{ home?.schoolRating }}</span></div>
+            <div>{{ home.street }}</div>
+            <span>{{ home.city }},</span>
+            <span>&nbsp;{{ home.state }}</span>
+            <div>Days on market: <span class="text-dark">{{ home.daysOnMarket }}</span></div>
+            <div>School rating: <span class="text-dark">{{ home.schoolRating }}</span></div>
           </div>
 
           <div class="home-details-info">
-            <div *ngIf="home?.renevated" class="text-primary">Recently renevated</div>
-            <div><span class="text-dark">{{ home?.bedrooms }}</span> bedrooms</div>
-            <div><span class="text-dark">{{ home?.bathrooms }}</span> bathrooms</div>
-            <div><span class="text-dark">{{ home?.squareFeet | number }}</span> Sq Feet</div>
+            <div *ngIf="home.renevated" class="text-primary">Recently renevated</div>
+            <div><span class="text-dark">{{ home.bedrooms }}</span> bedrooms</div>
+            <div><span class="text-dark">{{ home.bathrooms }}</span> bathrooms</div>
+            <div><span class="text-dark">{{ home.squareFeet | number }}</span> Sq Feet</div>
           </div>
         </div>
 
         <h4 class="home-details-contact pb-1 mt-3">Contact</h4>
         <div class="home-details-contact">
-          <div>{{ home?.userCompanyName || "Some company" }}</div>
-          <div>{{ home?.userEmail }}</div>
+          <div>{{ home.userCompanyName || "Some company" }}</div>
+          <div>{{ home.userEmail }}</div>
         </div>
     </div>
 

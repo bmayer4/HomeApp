@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CollapseModule } from 'ngx-bootstrap';
+import { CollapseModule, TabsModule } from 'ngx-bootstrap';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
@@ -34,7 +35,9 @@ import { MortgagecalcComponent } from './mortgagecalc/mortgagecalc.component';
       HttpClientModule,
       FormsModule,
       RouterModule.forRoot(appRoutes),
-      CollapseModule.forRoot()
+      CollapseModule.forRoot(),
+      TabsModule.forRoot(),
+      NgxGalleryModule
    ],
    providers: [],
    bootstrap: [

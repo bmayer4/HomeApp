@@ -32,7 +32,10 @@ namespace HomeApp.API.Data
 
         public async Task<Home> GetHome(int id)
         {
-            return await _context.Homes.Include(h => h.Photos).Include(h => h.User).FirstOrDefaultAsync(h => h.Id == id);
+            var home = await _context.Homes.Include(h => h.Photos).Include(h => h.User).FirstOrDefaultAsync(h => h.Id == id);
+            // eager loading (Include) doesn't support any filtering or sorting of loaded child collections
+            home.Photos = home.Photos.OrderByDescending(p => p.IsCover).ToList();  //ToList() here works in in memory data, not hitting database again
+            return home;
         }
 
         public async Task<IEnumerable<Home>> GetHomes()
