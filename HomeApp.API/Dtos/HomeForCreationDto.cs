@@ -17,6 +17,8 @@ namespace HomeApp.API.Dtos
         public string State { get; set; }
         [Required]
         public int Price { get; set; }
+        [Required]
+        public string Description { get; set; }
         public int Bedrooms { get; set; }  // could be land
         public int Bathrooms { get; set; }
         public int SquareFeet { get; set; }

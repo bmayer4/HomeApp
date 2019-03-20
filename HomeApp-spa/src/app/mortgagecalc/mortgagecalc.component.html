@@ -1,0 +1,56 @@
+<div class="mb-3">
+<form class="form" #mortgageForm="ngForm">
+  <div class="form-group">
+    <label for="amount">Amount</label>
+    <input type="text" 
+    class="form-control" 
+    #formAmount ="ngModel" 
+    placeholder="$0.00" 
+    required 
+    pattern="[0-9]+"
+    name="amount" 
+    [(ngModel)]="amount"
+    [ngClass]="{'is-invalid': formAmount.errors && formAmount.touched}"
+    >
+    <div class="invalid-feedback" [hidden]="!formAmount.errors">Please enter a dollar amount</div>
+  </div>
+  <div class="form-group">
+      <label for="amount">Down Payment</label>
+      <input type="text" 
+      class="form-control" 
+      #formDownPayment ="ngModel" 
+      placeholder="$0.00" 
+      required 
+      pattern="[0-9]+"
+      name="downPayment" 
+      [(ngModel)]="downPayment"
+      [ngClass]="{'is-invalid': formDownPayment.errors && formDownPayment.touched}"
+      >
+      <div class="invalid-feedback">Please enter a dollar amount</div>
+    </div>
+  <div class="form-group">
+    <label for="loanType"></label>
+    <select name="loanType" class="form-control" [(ngModel)]="loanType">
+      <option *ngFor="let loan of loanTypes" [value]="loan.value">{{ loan.display }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="interestRate">Interest Rate</label>
+    <input type="text" 
+    class="form-control" 
+    #formInterestRate ="ngModel" 
+    required 
+    pattern="^\d+(\.\d{1,10})?$"
+    placeholder="0.0%" 
+    name="interestRate" 
+    [(ngModel)]="interestRate"
+    [ngClass]="{'is-invalid': formInterestRate.errors && formInterestRate.touched}"
+    >
+    <div class="invalid-feedback">Please enter an interest rate</div>
+  </div>
+  <div class="d-flex justify-content-between">
+      <button class="btn btn-primary" type="button" (click)="calculate()">Calculate</button>
+      <div *ngIf="mPayment" class="mr-5 m-payment text-primary">{{ mPayment | currency }}</div>
+  </div>
+</form>
+</div>

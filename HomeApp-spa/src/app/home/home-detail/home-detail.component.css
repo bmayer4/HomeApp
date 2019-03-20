@@ -1,0 +1,21 @@
+.home-detail-img {
+    max-width: 600px;
+}
+
+.price {
+    font-size: 1.4rem;
+}
+
+.home-details-info  {
+    font-size: 1.2rem;
+}
+
+.calc {
+    font-size: .9rem;
+}
+
+@media (max-width: 575.98px) { 
+    .calc {
+        display: none;
+    }
+}

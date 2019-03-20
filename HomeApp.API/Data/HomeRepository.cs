@@ -30,19 +30,14 @@ namespace HomeApp.API.Data
             return await _context.Users.FirstOrDefaultAsync(h => h.Id == id);
         }
 
-        public async Task<IEnumerable<User>> GetProfessionalUsers()
-        {
-            return await _context.Users.Where(u => u.IsProfessional).OrderByDescending(u => u.Created).ToListAsync();
-        }
-
         public async Task<Home> GetHome(int id)
         {
-            return await _context.Homes.Include(h => h.Photos).FirstOrDefaultAsync(h => h.Id == id);
+            return await _context.Homes.Include(h => h.Photos).Include(h => h.User).FirstOrDefaultAsync(h => h.Id == id);
         }
 
         public async Task<IEnumerable<Home>> GetHomes()
         {
-            return await _context.Homes.Include(h => h.Photos).OrderByDescending(h => h.DateAdded).ToListAsync();
+            return await _context.Homes.Include(h => h.Photos).Include(h => h.User).OrderByDescending(h => h.DateAdded).ToListAsync();
         }
 
          public async Task<Photo> GetPhoto(int homeId, int id)

@@ -33,6 +33,8 @@ namespace HomeApp.API.Migrations
 
                     b.Property<DateTime>("DateAdded");
 
+                    b.Property<string>("Description");
+
                     b.Property<int>("Price");
 
                     b.Property<bool>("Renevated");
@@ -110,12 +112,10 @@ namespace HomeApp.API.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<string>("City");
+                    b.Property<string>("CompanyName");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
-
-                    b.Property<string>("Country");
 
                     b.Property<DateTime>("Created");
 
@@ -125,8 +125,6 @@ namespace HomeApp.API.Migrations
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
-
-                    b.Property<bool>("IsProfessional");
 
                     b.Property<bool>("LockoutEnabled");
 

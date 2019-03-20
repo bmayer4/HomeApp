@@ -37,20 +37,6 @@ namespace HomeApp.API.Controllers
             _config = config;
         }
 
-        // [HttpGet("users/{id}", Name = "GetUser")]
-        // public async Task<IActionResult> GetUser(int id)
-        // {
-        //     var user = await _repo.GetUser(id);
-        //     if (user == null)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //      var userToReturn = _mapper.Map<UserToReturnDto>(user);
-            
-        //     return Ok(userToReturn);
-        // }
-
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserForRegisterDto userForRegisterDto)
         {
@@ -73,12 +59,8 @@ namespace HomeApp.API.Controllers
                 }
 
                 var userToReturn = _mapper.Map<UserToReturnDto>(userToCreate);
-                if (userToCreate.IsProfessional)
-                {
-                    await _userManager.AddToRolesAsync(userToCreate, new[] {"Professional", "Member"});
-                } else {
-                    await _userManager.AddToRoleAsync(userToCreate, "Member");
-                }
+
+                 await _userManager.AddToRoleAsync(userToCreate, "Member");
                 
                 return CreatedAtRoute("GetUser", new { controller = "users",  id = userToCreate.Id }, userToReturn);
             }

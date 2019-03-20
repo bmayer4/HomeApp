@@ -12,6 +12,7 @@ namespace HomeApp.API.Dtos
         public string Street { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        public string Description { get; set; }
         public int Price { get; set; }
         public int Bedrooms { get; set; }
         public int Bathrooms { get; set; }
@@ -23,5 +24,8 @@ namespace HomeApp.API.Dtos
         //public int NumberOfPhotos { get { return Photos.Count(); }}
         public int NumberOfPhotos => Photos.Count;
         public ICollection<PhotoForDetailDto> Photos { get; set; } = new List<PhotoForDetailDto>();
+        public int UserId { get; set; }
+        public string UserEmail { get; set; }
+        public bool  UserIsProfessional { get; set; }
     }
 }

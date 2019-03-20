@@ -1,0 +1,60 @@
+.landing-header {
+    height: 460px;
+    position: relative;
+    background-image: url('../images/evelyn-paris.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.landing-header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background:rgba(0, 0, 0, .34);
+  }
+
+  .landing-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  }
+
+  .landing-info p {
+    margin: -30px 0 15px 0;
+  }
+
+  .icons i {
+      color: #56CC9D;
+  }
+
+  
+  @media (max-width: 575.98px) { 
+    .landing-info p {
+        font-size: 1.5rem;
+      }
+
+    .feature-info {
+    font-size: 1.1rem;
+    }
+
+    .feature-heading {
+        font-size: 1.4rem;
+    }
+
+    .icons {
+        padding: 10px 0;
+    }
+   }
+
+   @media (min-width: 576px) and (max-width: 767.98px) {
+    .feature-heading {
+        font-size: 1.5rem;
+    }
+
+    .feature-info {
+        font-size: 1.2rem;
+        }
+    }

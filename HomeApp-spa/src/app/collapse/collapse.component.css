@@ -1,0 +1,12 @@
+.toggle-text {
+    font-size: .8rem;
+}
+
+.collapse-header {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.collapse-header h4 {
+    margin-bottom: 0;
+}

@@ -70,8 +70,10 @@ namespace HomeApp.API.Controllers
             }
 
             var homeEntity = _mapper.Map<Home>(homeForCreationDto);
+            ///homeEntity.UserId = userId;
 
-            user.Homes.Add(homeEntity);
+            user.Homes.Add(homeEntity);  
+            //_repo.Add<Home>(homeEntity); // whoa! user id must be set if usng this
 
             if (!await _repo.SaveAll())
             {

@@ -1,5 +1,6 @@
 using System.Linq;
 using AutoMapper;
+using HomeApp.API.Data;
 using HomeApp.API.Dtos;
 using HomeApp.API.Models;
 
@@ -9,6 +10,7 @@ namespace HomeApp.API.Helpers
     {
         public AutoMapperProfiles() 
         {
+
             // source to dest
             CreateMap<UserForRegisterDto, User>();
             CreateMap<User, UserToReturnDto>();
@@ -32,7 +34,7 @@ namespace HomeApp.API.Helpers
             CreateMap<HomeForCreationDto, Home>();
             CreateMap<HomeForUpdateDto, Home>();
             CreateMap<PhotoForCreationDto, Photo>();
-             CreateMap<Photo, PhotoForReturnDto>();
+            CreateMap<Photo, PhotoForReturnDto>();
         }   
     }
 }

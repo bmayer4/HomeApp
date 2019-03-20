@@ -36,15 +36,5 @@ namespace HomeApp.API.Controllers
             
             return Ok(userToReturn);
         }
-
-        [HttpGet]
-        public async Task<IActionResult> GetProfessionalUsers()
-        {
-            var proUsers = await _repo.GetProfessionalUsers();
-
-            var proUsersToReturn = _mapper.Map<IEnumerable<UserToReturnDto>>(proUsers);
-
-            return Ok(proUsersToReturn);
-        }
     }
 }

@@ -1,0 +1,18 @@
+.footer {
+    background-color: #343a40;
+}
+
+.footer-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+
+.footer-list li {
+  padding: 5px 0; 
+  width: 100px;
+}
+
+.footer-list li:hover {
+  color: #F3969A;
+}

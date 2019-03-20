@@ -27,7 +27,6 @@ namespace HomeApp.API.Data
 
                 var roles = new List<Role> {
                     new Role() { Name = "Member" },
-                    new Role() { Name = "Professional" },
                     new Role() { Name = "Admin" },
                 };
 
@@ -38,7 +37,6 @@ namespace HomeApp.API.Data
                 var user = new User()
                 {
                     Created = DateTime.Now,
-                    IsProfessional = true,
                     EmailConfirmed = true,
                     Email = "admin@admin.com",
                     UserName = "admin@admin.com",  //REQUIRED
@@ -52,9 +50,9 @@ namespace HomeApp.API.Data
                     if (admin == null) {
                         Console.Write("itz", admin.NormalizedEmail);
                     }
-                    _userManager.AddToRolesAsync(admin, new[] { "Admin", "Professional", "Member" }).Wait();
+                    _userManager.AddToRolesAsync(admin, new[] { "Admin", "Member" }).Wait();
                 } else {
-                    Console.Write("NOOOO!");
+                    Console.Write("Error creating seed admin user");
                 }
             }
 
@@ -63,7 +61,8 @@ namespace HomeApp.API.Data
                 var homeData = System.IO.File.ReadAllText("Data/HomeSeedData.json");
                 var homes = JsonConvert.DeserializeObject<List<Home>>(homeData);
 
-            _context.AddRange(homes);
+            _context.Homes.AddRange(homes);  //hmmm  //wasnt homes before
+
             _context.SaveChanges();
             }
     }

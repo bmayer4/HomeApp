@@ -82,6 +82,7 @@ namespace HomeApp.API
                 });;
             if (Env.IsDevelopment()) { Mapper.Reset(); }
             services.AddAutoMapper();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -98,6 +99,7 @@ namespace HomeApp.API
 
             //app.UseHttpsRedirection();
             
+            app.UseCors(opts => opts.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseMvc();
         }
