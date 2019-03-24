@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CollapseModule, TabsModule } from 'ngx-bootstrap';
+import { JwtModule } from '@auth0/angular-jwt';
+import { CollapseModule, TabsModule, BsDatepickerModule } from 'ngx-bootstrap';
 import { NgxGalleryModule } from 'ngx-gallery';
 
 import { AppComponent } from './app.component';
@@ -16,7 +17,13 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeDetailComponent } from './home/home-detail/home-detail.component';
 import { CollapseComponent } from './collapse/collapse.component';
 import { MortgagecalcComponent } from './mortgagecalc/mortgagecalc.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
 
+
+export function tokenGetter() {
+   return localStorage.getItem('token');
+}
 
 @NgModule({
    declarations: [
@@ -28,16 +35,27 @@ import { MortgagecalcComponent } from './mortgagecalc/mortgagecalc.component';
       HomeDetailComponent,
       FooterComponent,
       CollapseComponent,
-      MortgagecalcComponent
+      MortgagecalcComponent,
+      RegisterComponent,
+      LoginComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      ReactiveFormsModule,
       RouterModule.forRoot(appRoutes),
       CollapseModule.forRoot(),
+      BsDatepickerModule.forRoot(),
       TabsModule.forRoot(),
-      NgxGalleryModule
+      NgxGalleryModule,
+      JwtModule.forRoot({
+         config: {
+            tokenGetter: tokenGetter,
+            whitelistedDomains: ['localhost:5000'],
+            blacklistedRoutes: ['localhost:5000/api/auth']
+         }
+      })
    ],
    providers: [],
    bootstrap: [

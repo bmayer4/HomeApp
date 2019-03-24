@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row my-5">
+      <div class="col-md-6 mx-auto">
+      <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+        <h2 class="text-center text-primary">Login</h2>
+        <hr>
+        <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" 
+        class="form-control" 
+        name="email" 
+        required 
+        #email="ngModel" 
+        [(ngModel)]="model.email"
+        [ngClass]="{'is-invalid': email.errors && email.touched}"
+        id="email">
+        <div class="invalid-feedback">Email Required</div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" 
+          class="form-control" 
+          name="password" 
+          required 
+          #password="ngModel" 
+          [(ngModel)]="model.password"
+          [ngClass]="{'is-invalid': password.errors && password.touched}"
+          id="password">
+          <div [hidden]="!password.errors?.required" class="invalid-feedback">Email Required</div>
+          </div>
+
+          <button [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+
+      </form>
+      </div>
+  </div>
+</div>

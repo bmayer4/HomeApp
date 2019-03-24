@@ -33,7 +33,6 @@ namespace HomeApp.API
         }
 
         public IConfiguration Configuration { get; }
-        public IConfigurationBuilder CB { get; }
         private IHostingEnvironment Env { get; set; }
 
         // this method gets called by the runtime. Use this method to add services to the container.
@@ -79,7 +78,7 @@ namespace HomeApp.API
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
             .AddJsonOptions(opt => {
                     opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                });;
+                });
             if (Env.IsDevelopment()) { Mapper.Reset(); }
             services.AddAutoMapper();
             services.AddCors();

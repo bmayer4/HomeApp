@@ -52,12 +52,6 @@ namespace HomeApp.API.Controllers
   
             if (result.Succeeded)
             {
-
-                if (userToCreate.Email != null)
-                {
-                    userToCreate.EmailConfirmed = true;
-                }
-
                 var userToReturn = _mapper.Map<UserToReturnDto>(userToCreate);
 
                  await _userManager.AddToRoleAsync(userToCreate, "Member");

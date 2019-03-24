@@ -4,6 +4,7 @@
     <label for="amount">Amount</label>
     <input type="text" 
     class="form-control" 
+    id="amount"
     #formAmount ="ngModel" 
     placeholder="$0.00" 
     required 
@@ -15,9 +16,10 @@
     <div class="invalid-feedback" [hidden]="!formAmount.errors">Please enter a dollar amount</div>
   </div>
   <div class="form-group">
-      <label for="amount">Down Payment</label>
+      <label for="downPayment">Down Payment</label>
       <input type="text" 
       class="form-control" 
+      id="downPayment"
       #formDownPayment ="ngModel" 
       placeholder="$0.00" 
       required 
@@ -29,7 +31,7 @@
       <div class="invalid-feedback">Please enter a dollar amount</div>
     </div>
   <div class="form-group">
-    <label for="loanType"></label>
+    <label>Loan Type</label>
     <select name="loanType" class="form-control" [(ngModel)]="loanType">
       <option *ngFor="let loan of loanTypes" [value]="loan.value">{{ loan.display }}</option>
     </select>
@@ -38,6 +40,7 @@
     <label for="interestRate">Interest Rate</label>
     <input type="text" 
     class="form-control" 
+    id="interestRate"
     #formInterestRate ="ngModel" 
     required 
     pattern="^\d+(\.\d{1,10})?$"

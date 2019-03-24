@@ -22,22 +22,21 @@ export class HomeDetailComponent implements OnInit {
     this.galleryOptions = [
       {
           width: '100%',
-          height: '400px',
+          height: '440px',
           imagePercent: 100,
           thumbnailsColumns: 4,
           imageAnimation: NgxGalleryAnimation.Slide,
+          previewCloseOnClick: true,
+          previewAnimation: false
       },
       {
         breakpoint: 767.98,
-        width: '100%',
-        height: '320px',
-        imagePercent: 100,
+        height: '340px',
       },
       {
         breakpoint: 575.98,
-        width: '100%',
+        thumbnails: false,
         height: '300px',
-        imagePercent: 100,
         preview: false
       }
     ];

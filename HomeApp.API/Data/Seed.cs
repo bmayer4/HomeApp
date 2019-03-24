@@ -37,7 +37,6 @@ namespace HomeApp.API.Data
                 var user = new User()
                 {
                     Created = DateTime.Now,
-                    EmailConfirmed = true,
                     Email = "admin@admin.com",
                     UserName = "admin@admin.com",  //REQUIRED
                 };
@@ -47,13 +46,8 @@ namespace HomeApp.API.Data
                 if (result.Succeeded)
                 {
                     var admin = _userManager.FindByEmailAsync("admin@admin.com".Normalize()).Result;
-                    if (admin == null) {
-                        Console.Write("itz", admin.NormalizedEmail);
-                    }
                     _userManager.AddToRolesAsync(admin, new[] { "Admin", "Member" }).Wait();
-                } else {
-                    Console.Write("Error creating seed admin user");
-                }
+                } 
             }
 
             if (!_context.Homes.Any())
@@ -62,7 +56,6 @@ namespace HomeApp.API.Data
                 var homes = JsonConvert.DeserializeObject<List<Home>>(homeData);
 
             _context.Homes.AddRange(homes);  //hmmm  //wasnt homes before
-
             _context.SaveChanges();
             }
     }

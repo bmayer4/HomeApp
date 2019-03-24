@@ -1,7 +1,7 @@
-<div class="collapse-header">
+<div class="collapse-header py-2">
   <h4 class="py-2" (click)="toggleContent()"> 
     {{title}}
-    <span class="pull-right toggle-text pt-2">{{ visible ? 'hide' : 'show' }}</span>
+    <span class="toggle-text pull-right pt-2 text-primary">{{ visible ? 'hide' : 'show' }}</span>
   </h4>
   <ng-content *ngIf='visible'></ng-content>
 </div>
