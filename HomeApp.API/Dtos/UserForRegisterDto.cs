@@ -24,7 +24,5 @@ namespace HomeApp.API.Dtos
         public DateTime DateOfBirth { get; set; }
 
         public DateTime Created { get; set; }
-
-        public string CompanyName { get; set; }
     }
 }

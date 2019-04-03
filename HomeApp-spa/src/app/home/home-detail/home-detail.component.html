@@ -28,18 +28,19 @@
             <div><span class="text-dark">{{ home.squareFeet | number }}</span> Sq Feet</div>
           </div>
         </div>
-
-        <h4 class="home-details-contact pb-1 mt-3">Contact</h4>
-        <div class="home-details-contact">
-          <div>{{ home.userCompanyName || "Some company" }}</div>
-          <div>{{ home.userEmail }}</div>
-        </div>
     </div>
 
-    <div class="mort-calc mt-3">
+    <div class="home-contact mt-3">
+        <app-collapse title="Contact">
+            <div>{{ home.userEmail }}</div>
+        </app-collapse>
+    </div>
+
+    <div class="mort-calc">
       <app-collapse title="Mortgage Calculator">
           <app-mortgagecalc></app-mortgagecalc>
       </app-collapse>
     </div>
+
   </div>
 </div>

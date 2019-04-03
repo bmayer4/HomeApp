@@ -26,6 +26,5 @@ namespace HomeApp.API.Dtos
         public ICollection<PhotoForDetailDto> Photos { get; set; } = new List<PhotoForDetailDto>();
         public int UserId { get; set; }
         public string UserEmail { get; set; }
-        public bool  UserIsProfessional { get; set; }
     }
 }

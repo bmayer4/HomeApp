@@ -1,0 +1,16 @@
+@media (max-width: 991.98px) { 
+    .queue {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 575.98px) { 
+
+    .photos-edit {
+        padding: 20px;
+    }
+}
+
+.file-drop {
+    max-width: 180px;
+}

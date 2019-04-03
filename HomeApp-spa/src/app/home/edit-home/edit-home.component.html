@@ -1,0 +1,158 @@
+<div class="container">
+    <div class="my-5">
+      <h4>Edit Home</h4>
+        <tabset class="home-tabset" #addHomeTabs>
+          <tab heading="Home Details">
+            <div class="row mt-3">
+              <div class="col-md-6 mx-auto">
+                <form #addHomeForm="ngForm" (ngSubmit)="updateHome()" class="mt-4">
+                  
+                    <div class="form-group">
+                        <input type="text" 
+                        class="form-control" 
+                        name="street" 
+                        required 
+                        placeholder="street"
+                        #street="ngModel" 
+                        [(ngModel)]="home.street"
+                        [ngClass]="{'is-invalid': street.errors && street.touched}"
+                        >
+                        <div class="invalid-feedback">Street required</div>
+                    </div>
+
+                    
+                    <div class="form-group">
+                    <div class="form-row">
+                    <div class="col-6">
+                        <input type="text" 
+                        class="form-control mr-2" 
+                        name="city" 
+                        required 
+                        placeholder="city"
+                        #city="ngModel" 
+                        [(ngModel)]="home.city"
+                        [ngClass]="{'is-invalid': city.errors && city.touched}"
+                        >
+                        <div class="invalid-feedback">City required</div>
+                    </div>
+
+                    <div class="col-6">
+                        <input type="text" 
+                        class="form-control" 
+                        name="state" 
+                        required 
+                        placeholder="state"
+                        #state="ngModel" 
+                        [(ngModel)]="home.state"
+                        [ngClass]="{'is-invalid': state.errors && state.touched}"
+                        >
+                        <div class="invalid-feedback">State required</div>
+                    </div>
+                    </div>
+                  </div>
+
+                      <div class="form-group">
+                        <textarea type="text" 
+                        class="form-control" 
+                        name="description" 
+                        required 
+                        placeholder="description"
+                        #description="ngModel" 
+                        [(ngModel)]="home.description"
+                        [ngClass]="{'is-invalid': description.errors && description.touched}"
+                        ></textarea>
+                        <div class="invalid-feedback">State required</div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="form-row">
+                            <div class="col-4">
+                                  <input type="text" 
+                                  class="form-control mr-2" 
+                                  name="bedrooms" 
+                                  required 
+                                  placeholder="bed"
+                                  pattern="\d*"
+                                  #bedrooms="ngModel" 
+                                  [(ngModel)]="home.bedrooms"
+                                  [ngClass]="{'is-invalid': bedrooms.errors && bedrooms.touched}"
+                                  >
+                                  <div class="invalid-feedback" [hidden]="!bedrooms.errors?.required">Bed required</div>
+                                  <div class="invalid-feedback" [hidden]="!bedrooms.errors?.pattern">Numbers only</div>
+                            </div>
+                            <div class="col-4">
+                                <input type="text" 
+                                class="form-control mr-2" 
+                                name="bathrooms" 
+                                required 
+                                placeholder="bath"
+                                pattern="\d*"
+                                #bathrooms="ngModel" 
+                                [(ngModel)]="home.bathrooms"
+                                [ngClass]="{'is-invalid': bathrooms.errors && bathrooms.touched}"
+                                >
+                                <div class="invalid-feedback" [hidden]="!bathrooms.errors?.required">Bath required</div>
+                              <div class="invalid-feedback" [hidden]="!bathrooms.errors?.pattern">Numbers only</div>
+                          </div>
+                          <div class="col-4">
+                              <input type="text" 
+                              class="form-control mr-2" 
+                              name="squareFeet" 
+                              required 
+                              placeholder="sq ft"
+                              pattern="\d*"
+                              #squareFeet="ngModel" 
+                              [(ngModel)]="home.squareFeet"
+                              [ngClass]="{'is-invalid': squareFeet.errors && squareFeet.touched}"
+                              >
+                              <div class="invalid-feedback" [hidden]="!squareFeet.errors?.required">Sq Ft required</div>
+                              <div class="invalid-feedback" [hidden]="!squareFeet.errors?.pattern">Numbers only</div>
+                        </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="form-row">
+                            <div class="col-4">
+                                <input type="text" 
+                                class="form-control mr-2" 
+                                name="price" 
+                                required 
+                                placeholder="price"
+                                pattern="\d*"
+                                #price="ngModel" 
+                                [(ngModel)]="home.price"
+                                [ngClass]="{'is-invalid': price.errors && price.touched}"
+                                >
+                                <div class="invalid-feedback" [hidden]="!price.errors?.required">Price required</div>
+                                <div class="invalid-feedback" [hidden]="!price.errors?.pattern">Numbers only</div>
+                            </div>
+                            <div class="col-8">
+                              <div class="form-check">
+                                <label class="form-check-label mr-2">Renevated:</label>
+                                <div class="form-check form-check-inline">
+                                  <label class="form-check-label">
+                                 <input type="radio" class="form-check-input" [value]="true" name="renevated" [(ngModel)]="home.renevated">Yes
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                 <input type="radio" class="form-check-input" [value]="false" name="renevated" [(ngModel)]="home.renevated">No
+                                </label>
+                                  </div>
+                            </div>
+                          </div>
+                          
+                           </div>
+                      </div>
+                  <button class="btn btn-primary btn-sm mt-2" [disabled]="!addHomeForm.valid">Update Home</button>
+                </form>
+              </div>
+            </div>
+          </tab>
+          <tab heading="Add Photos">
+            <app-photo-upload [photos]="home?.photos"></app-photo-upload>
+          </tab>
+        </tabset>
+      </div>
+</div> 

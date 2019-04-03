@@ -43,6 +43,11 @@ namespace HomeApp.API.Data
             return await _context.Homes.Include(h => h.Photos).Include(h => h.User).OrderByDescending(h => h.DateAdded).ToListAsync();
         }
 
+        public async Task<IEnumerable<Home>> GetHomesByUser(int id)
+        {
+            return await _context.Homes.Include(h => h.Photos).Include(h => h.User).Where(h => h.User.Id == id).OrderByDescending(h => h.DateAdded).ToListAsync();
+        }
+
          public async Task<Photo> GetPhoto(int homeId, int id)
         {
             return await _context.Photos.FirstOrDefaultAsync(p => p.HomeId == homeId && p.Id == id);

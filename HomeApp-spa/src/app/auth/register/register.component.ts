@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  model: {};
   registerForm: FormGroup;
   bsConfig: Partial<BsDatepickerConfig> = { containerClass: 'theme-default' };
 

@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row my-5">
       <div class="col-md-6 mx-auto">
-      <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
         <h2 class="text-center text-primary">Login</h2>
         <hr>
+      <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
         <div class="form-group">
         <label for="email">Email</label>
         <input type="text" 
@@ -27,7 +27,7 @@
           [(ngModel)]="model.password"
           [ngClass]="{'is-invalid': password.errors && password.touched}"
           id="password">
-          <div [hidden]="!password.errors?.required" class="invalid-feedback">Email Required</div>
+          <div class="invalid-feedback">Password Required</div>
           </div>
 
           <button [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>

@@ -9,7 +9,6 @@ namespace HomeApp.API.Models
         public DateTime DateOfBirth { get; set; }
         public ICollection<UserRole> UserRoles { get; set; }
         public DateTime Created { get; set; }
-        public string CompanyName { get; set; } 
         public ICollection<Home> Homes { get; set; } = new List<Home>();
     }
 }

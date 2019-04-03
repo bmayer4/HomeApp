@@ -14,5 +14,6 @@ namespace HomeApp.API.Data
         Task<Photo> GetPhoto(int homeId, int id);
         Task<Photo> GetCoverPhotoForHome(int homeId);
         Task<IEnumerable<Home>> GetHomes();
+        Task<IEnumerable<Home>> GetHomesByUser(int id);
     }
 }

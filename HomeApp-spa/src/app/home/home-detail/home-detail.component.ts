@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from 'src/app/_services/home.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
+import { Home } from 'src/app/_models/home';
 
 @Component({
   selector: 'app-home-detail',
@@ -10,7 +11,7 @@ import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gal
 })
 export class HomeDetailComponent implements OnInit {
 
-  home;
+  home: Home;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 

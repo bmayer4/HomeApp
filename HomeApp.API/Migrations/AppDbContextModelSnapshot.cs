@@ -112,8 +112,6 @@ namespace HomeApp.API.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<string>("CompanyName");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 

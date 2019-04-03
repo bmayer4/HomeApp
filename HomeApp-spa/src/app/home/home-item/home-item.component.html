@@ -4,13 +4,13 @@
     </div>
     <div class="card-body">
         <div class="home-data-price text-dark">{{ home.price | currency : 'USD' : 'symbol' : '1.0' }}</div>
-        <div class="d-flex">
+        <div class="d-flex home-data-details">
             <span class="text-muted">{{ home.bedrooms }} Bed |</span>
             <span class="text-muted">&nbsp;{{ home.bathrooms }} Bath |</span>
-            <span class="text-muted">&nbsp;{{ home.squareFeet | number }} Sq Ft</span>
+            <span class="text-muted home-data-sqft">&nbsp;{{ home.squareFeet | number }} Sq Ft</span>
         </div>
         <div>
-            <span class="text-muted">{{ home.street }},</span>
+            <span class="text-muted">{{ home.city }},</span>
             <span class="text-muted">&nbsp;{{ home.state}}</span>
         </div>
     </div>

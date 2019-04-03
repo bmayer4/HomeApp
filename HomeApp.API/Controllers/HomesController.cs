@@ -52,6 +52,25 @@ namespace HomeApp.API.Controllers
             return Ok(homesToReturn);
         }
 
+        [HttpGet("myHomes")]
+        public async Task<IActionResult> GetHomesByUser()
+        {
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            
+            var user = await _repo.GetUser(userId);
+
+            if (user == null)  
+            {
+                return NotFound();
+            }
+
+            var userHomesFromRepo = await _repo.GetHomesByUser(user.Id);
+
+            var userHomesToReturn = _mapper.Map<IEnumerable<HomeForListDto>>(userHomesFromRepo);
+
+            return Ok(userHomesToReturn);
+        }
+
         [HttpPost]  //not making userId part of url, not part of home functionality
         public async Task<IActionResult> CreateHome([FromBody] HomeForCreationDto homeForCreationDto)
         {
@@ -73,7 +92,7 @@ namespace HomeApp.API.Controllers
             ///homeEntity.UserId = userId;
 
             user.Homes.Add(homeEntity);  
-            //_repo.Add<Home>(homeEntity); // whoa! user id must be set if usng this
+            //_repo.Add<Home>(homeEntity); // whoa! user id must be set if using this
 
             if (!await _repo.SaveAll())
             {
@@ -85,7 +104,7 @@ namespace HomeApp.API.Controllers
             return CreatedAtRoute("GetHome", new { id = homeEntity.Id }, homeToReturn);
         }
 
-        [HttpPatch("{id}")]  // or put? (we can use post for changing one property)
+        [HttpPatch("{id}")]
         public async Task<IActionResult> UpdateHome(int id, [FromBody] HomeForUpdateDto homeForUpdateDto)
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);

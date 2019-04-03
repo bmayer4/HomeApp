@@ -4,3 +4,14 @@
 @import '../node_modules/bootswatch/dist/minty/bootstrap.min.css';
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 @import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
+@import '../node_modules/alertifyjs/build/css/alertify.min.css';
+@import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
+
+/* heading titles */
+.home-tabset > .nav-tabs > li.active > a {  
+    color: #56CC9D;
+}
+
+.home-tabset > .nav-tabs > li > a {  
+    color: #5a5a5a;
+}

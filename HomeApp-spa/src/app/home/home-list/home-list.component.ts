@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from 'src/app/_services/home.service';
+import { ActivatedRoute } from '@angular/router';
+import { Home } from 'src/app/_models/home';
 
 @Component({
   selector: 'app-home-list',
@@ -8,16 +10,18 @@ import { HomeService } from 'src/app/_services/home.service';
 })
 export class HomeListComponent implements OnInit {
 
-  homes;
+  homes: Home[];
 
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService, private route: ActivatedRoute) { }
 
 ngOnInit() {
-    this.homeService.getHomes().subscribe(homes => {
-      this.homes = homes;
-    }, err => {
-      console.log(err);
-    });
+   this.loadHomes();
+}
+
+loadHomes() {
+  this.route.data.subscribe(data => {
+    this.homes = data['homes'];
+  }, err => console.log(err));
 }
 
 }

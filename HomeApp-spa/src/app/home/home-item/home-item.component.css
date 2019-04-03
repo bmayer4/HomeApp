@@ -8,13 +8,19 @@
 }
 
 .home-data img:hover {
-    transform: scale(1.1);
+    transform: scale(1.08);
     transition: all .3s ease-in;
 }
 
 .home-data-price {
     font-size: 1.2rem;
 }
+
+ @media (min-width: 576px) { 
+    .home-data-details {
+        font-size: .8rem;
+     }
+  }  
 
 /* .card-img-top {
     width: 100%;
