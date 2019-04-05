@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HomeApp.API.Helpers;
 using HomeApp.API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -38,9 +39,10 @@ namespace HomeApp.API.Data
             return home;
         }
 
-        public async Task<IEnumerable<Home>> GetHomes()
+        public async Task<PagedList<Home>> GetHomes(HomeParams homeParams)
         {
-            return await _context.Homes.Include(h => h.Photos).Include(h => h.User).OrderByDescending(h => h.DateAdded).ToListAsync();
+            var homes = _context.Homes.Include(h => h.Photos).Include(h => h.User).OrderByDescending(h => h.DateAdded).AsQueryable();
+            return await PagedList<Home>.CreatePagedListAsync(homes, homeParams.CurrentPage, homeParams.PageSize);
         }
 
         public async Task<IEnumerable<Home>> GetHomesByUser(int id)

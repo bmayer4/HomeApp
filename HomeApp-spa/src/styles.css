@@ -15,3 +15,14 @@
 .home-tabset > .nav-tabs > li > a {  
     color: #5a5a5a;
 }
+
+/* paging tabs */
+.page-link {
+    background-color:#56CC9D;
+    border-color: #56CC9D;
+}
+
+.page-item.active .page-link {
+    /* background-color:#ccc;
+    border-color: #ccc; */
+}

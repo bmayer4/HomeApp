@@ -6,15 +6,12 @@ import { catchError } from 'rxjs/operators';
 
 
 @Injectable({providedIn: 'root' })
-export class HomesResolver implements Resolve<any> {
-
-    currentPage = 1;
-    pageSize = 10;
+export class UserHomesResolver implements Resolve<any> {
 
     constructor(private homeService: HomeService, private router: Router) {}
 
     resolve(route: ActivatedRouteSnapshot): Observable<any> {
-        return this.homeService.getHomes(this.currentPage, this.pageSize).pipe(catchError(error => {
+        return this.homeService.getHomesByUser().pipe(catchError(error => {
             console.log(error);
             this.router.navigate(['/']);
             return of(null);

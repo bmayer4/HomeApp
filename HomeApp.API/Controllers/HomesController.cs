@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using HomeApp.API.Data;
 using HomeApp.API.Dtos;
+using HomeApp.API.Helpers;
 using HomeApp.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -43,9 +44,11 @@ namespace HomeApp.API.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> GetHomes()
+        public async Task<IActionResult> GetHomes([FromQuery] HomeParams homeParams)
         {
-            var homesFromRepo = await _repo.GetHomes();
+            var homesFromRepo = await _repo.GetHomes(homeParams);
+
+            Response.AddPaginationHeader(homesFromRepo.CurrentPage, homesFromRepo.PageSize, homesFromRepo.TotalPages, homesFromRepo.TotalItems);
 
             var homesToReturn = _mapper.Map<IEnumerable<HomeForListDto>>(homesFromRepo);
 

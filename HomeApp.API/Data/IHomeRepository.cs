@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using HomeApp.API.Helpers;
 using HomeApp.API.Models;
 
 namespace HomeApp.API.Data
@@ -13,7 +14,7 @@ namespace HomeApp.API.Data
         Task<Home> GetHome(int id);
         Task<Photo> GetPhoto(int homeId, int id);
         Task<Photo> GetCoverPhotoForHome(int homeId);
-        Task<IEnumerable<Home>> GetHomes();
+        Task<PagedList<Home>> GetHomes(HomeParams homeParams);
         Task<IEnumerable<Home>> GetHomesByUser(int id);
     }
 }

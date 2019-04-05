@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from 'src/app/_services/home.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-homes',
@@ -11,11 +12,15 @@ export class UserHomesComponent implements OnInit {
 
   userHomes;
 
-  constructor(private homeService: HomeService, private as: AlertifyService) { }
+  constructor(private homeService: HomeService, private as: AlertifyService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.homeService.getHomesByUser().subscribe(res => {
-      this.userHomes = res;
+    this.loadUserHomes();
+  }
+
+  loadUserHomes() {
+    this.route.data.subscribe(data => {
+      this.userHomes = data['homes'];
     }, err => console.log(err));
   }
 

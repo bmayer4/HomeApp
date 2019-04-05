@@ -13,7 +13,7 @@ confirm(message: string, okCallback: () => any) {
     if (e) {
       okCallback();
     } else {}
-  }).set({ transition: 'fade' });
+  }).set({ transition: 'fade' }).setHeader('Alert');
 }
 
 success(message: string) {

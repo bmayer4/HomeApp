@@ -1,6 +1,13 @@
 <div class="container">
     <div class="row">
-    <h3 class="text-center my-5">My Homes</h3>
+
+      <div *ngIf="!userHomes.length">
+      <h5 class="mt-4">No Homes yet..</h5>
+      <a [routerLink]="['/homes/add']">Go to - Add Home</a>
+      </div>
+
+    <div *ngIf="userHomes.length">
+    <h3 class="text-center my-5 px-2">My Homes</h3>
           <table class="table">
             <thead class="">
             <tr>
@@ -24,5 +31,6 @@
             </tr>
           </tbody>
           </table>
+        </div>
         </div>
         </div>
