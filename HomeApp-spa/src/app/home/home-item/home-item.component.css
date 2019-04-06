@@ -13,7 +13,12 @@
 }
 
 .home-data-price {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+}
+
+.fav-heart {
+    font-size: 1.1rem;
+    color: #ccc;
 }
 
  @media (min-width: 576px) { 

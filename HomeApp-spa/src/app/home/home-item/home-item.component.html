@@ -3,7 +3,11 @@
         <img class="img-fluid" src="{{ home.coverUrl }}" alt="{{ home.street }}">
     </div>
     <div class="card-body">
-        <div class="home-data-price text-dark">{{ home.price | currency : 'USD' : 'symbol' : '1.0' }}</div>
+        <div class="d-flex justify-content-between">
+                <div class="home-data-price text-dark">{{ home.price | currency : 'USD' : 'symbol' : '1.0' }}</div>
+                <div *ngIf="loggedIn()"><i class="fa fa-heart fav-heart" [ngClass]="{'text-primary': isFav(home.favUserIds)}" (click)="onHeartClick($event, home)"></i></div>
+        </div>
+        
         <div class="d-flex home-data-details">
             <span class="text-muted">{{ home.bedrooms }} Bed |</span>
             <span class="text-muted">&nbsp;{{ home.bathrooms }} Bath |</span>

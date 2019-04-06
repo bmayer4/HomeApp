@@ -19,17 +19,20 @@ namespace HomeApp.API.Helpers
                     opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsCover).Url);
                 })
                  .ForMember(dest => dest.DaysOnMarket, opt => {
-                    opt.ResolveUsing(src => src.DateAdded.CalculateDaysOnMarket());
+                    opt.MapFrom(src => src.DateAdded.CalculateDaysOnMarket());
                 });
             CreateMap<Home, HomeForListDto>()
                 .ForMember(dest => dest.CoverUrl, opt => {
                     opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsCover).Url);
                 })
                 .ForMember(dest => dest.NumberOfPhotos, opt => {
-                    opt.ResolveUsing(src => src.Photos.Count);
+                    opt.MapFrom(src => src.Photos.Count);
                 })
                 .ForMember(dest => dest.DaysOnMarket, opt => {
-                    opt.ResolveUsing(src => src.DateAdded.CalculateDaysOnMarket());
+                    opt.MapFrom(src => src.DateAdded.CalculateDaysOnMarket());
+                })
+                 .ForMember(dest => dest.FavUserIds, opt => {
+                    opt.MapFrom(src => src.Favorites.Select(f => f.UserId));
                 });
             CreateMap<HomeForCreationDto, Home>();
             CreateMap<HomeForUpdateDto, Home>();

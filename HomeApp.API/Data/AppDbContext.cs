@@ -12,6 +12,7 @@ namespace HomeApp.API.Data
 
         public DbSet<Home> Homes { get; set; }  
         public DbSet<Photo> Photos { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -23,6 +24,20 @@ namespace HomeApp.API.Data
                 userRole.HasOne(ur => ur.User).WithMany(r => r.UserRoles).HasForeignKey(ur => ur.UserId).IsRequired();
             });
 
+            builder.Entity<Favorite>()
+                .HasKey(f => new { f.UserId, f.HomeId });
+
+            builder.Entity<Favorite>()
+                .HasOne(f => f.User)
+                .WithMany(u => u.Favorites)
+                .HasForeignKey(f => f.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Favorite>()
+                .HasOne(f => f.Home)
+                .WithMany(h => h.Favorites)
+                .HasForeignKey(f => f.HomeId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

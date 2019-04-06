@@ -54,4 +54,8 @@ deleteHome(id: number) {
     return this.http.delete(this.baseUrl + 'homes/' + id);
 }
 
+toggleHomeAsFavorite(homeId: number) {
+    return this.http.post(this.baseUrl + 'users/favorite/' + homeId, {});
+}
+
 }

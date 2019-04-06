@@ -19,5 +19,6 @@ namespace HomeApp.API.Dtos
         public int SquareFeet { get; set; }
         public string CoverUrl { get; set; }
         public int NumberOfPhotos { get; set; }
-    }
+        public ICollection<int> FavUserIds { get; set; }
+    }   
 }

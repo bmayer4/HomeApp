@@ -18,6 +18,7 @@ export interface Home {
     renevated?: boolean;
     userId?: number;
     userEmail?: string;
+    favUserIds?: number[];
     photos?: Photo[];
 }
 

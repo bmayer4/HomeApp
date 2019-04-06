@@ -41,7 +41,7 @@ namespace HomeApp.API.Data
 
         public async Task<PagedList<Home>> GetHomes(HomeParams homeParams)
         {
-            var homes = _context.Homes.Include(h => h.Photos).Include(h => h.User).OrderByDescending(h => h.DateAdded).AsQueryable();
+            var homes = _context.Homes.Include(h => h.Photos).Include(h => h.User).Include(h => h.Favorites).OrderByDescending(h => h.DateAdded).AsQueryable();
             return await PagedList<Home>.CreatePagedListAsync(homes, homeParams.CurrentPage, homeParams.PageSize);
         }
 
@@ -58,6 +58,11 @@ namespace HomeApp.API.Data
         public async Task<Photo> GetCoverPhotoForHome(int homeId)
         {
             return await _context.Photos.FirstOrDefaultAsync(p => p.IsCover && p.HomeId == homeId);
+        }
+
+        public async Task<Favorite> GetFavorite(int userId, int homeId)
+        {
+            return await _context.Favorites.FirstOrDefaultAsync(f => f.UserId == userId && f.HomeId == homeId);
         }
 
         public async Task<bool> SaveAll()

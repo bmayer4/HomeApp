@@ -21,5 +21,6 @@ namespace HomeApp.API.Models
         public ICollection<Photo> Photos { get; set; } = new List<Photo>();
         public int UserId { get; set; }
         public User User { get; set; }
+        public ICollection<Favorite> Favorites { get; set; } = new List<Favorite>();
     }
 }
