@@ -74,6 +74,28 @@ namespace HomeApp.API.Controllers
             return Ok(userHomesToReturn);
         }
 
+        
+        [HttpGet("favorites")]
+        public async Task<IActionResult> GetFavHomesByUser([FromQuery] HomeParams homeParams)
+        {
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            
+            var user = await _repo.GetUser(userId);
+
+            if (user == null)  
+            {
+                return NotFound();
+            }
+
+            var favHomesByUserFromRepo = await _repo.GetFavHomesByUser(userId, homeParams);
+
+             Response.AddPaginationHeader(favHomesByUserFromRepo.CurrentPage, favHomesByUserFromRepo.PageSize, favHomesByUserFromRepo.TotalPages, favHomesByUserFromRepo.TotalItems);
+
+            var favHomesByUserToReturn = _mapper.Map<IEnumerable<HomeForListDto>>(favHomesByUserFromRepo);
+
+            return Ok(favHomesByUserToReturn);
+        }
+
         [HttpPost]  //not making userId part of url, not part of home functionality
         public async Task<IActionResult> CreateHome([FromBody] HomeForCreationDto homeForCreationDto)
         {

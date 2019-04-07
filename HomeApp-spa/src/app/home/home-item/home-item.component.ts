@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Home } from 'src/app/_models/home';
 import { AuthService } from 'src/app/_services/auth.service';
 import { HomeService } from 'src/app/_services/home.service';
@@ -12,6 +12,8 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 export class HomeItemComponent implements OnInit {
 
   @Input() home: Home;
+  @Input() onFavPage = false;
+  @Output() removeHomeFromList = new EventEmitter();
 
   constructor(private authService: AuthService, private homeService: HomeService, private as: AlertifyService) { }
 
@@ -40,8 +42,11 @@ export class HomeItemComponent implements OnInit {
     const isFav = home.favUserIds.includes(userId);
 
       this.homeService.toggleHomeAsFavorite(home.id).subscribe(() => {
-        if (isFav) {
+        if (isFav && !this.onFavPage) {
           this.home.favUserIds = this.home.favUserIds.filter(h => h !== userId);
+          this.as.success('Home removed form favorites');
+        } else if (isFav && this.onFavPage) {
+          this.removeHomeFromList.emit();
           this.as.success('Home removed form favorites');
         } else {
           this.home.favUserIds.push(userId);

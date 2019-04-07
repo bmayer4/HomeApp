@@ -16,6 +16,9 @@
         <li *ngIf="isAuth()" class="nav-item" routerLinkActive="active">
             <a class="nav-link" [routerLink]="['/homes/myHomes']">My Homes</a>
         </li>
+        <li *ngIf="isAuth()" class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/homes/favorites']">My Favorites</a>
+        </li>
         <li *ngIf="!isAuth()" class="nav-item" routerLinkActive="active">
             <a class="nav-link" [routerLink]="['/register']">Register</a>
         </li>

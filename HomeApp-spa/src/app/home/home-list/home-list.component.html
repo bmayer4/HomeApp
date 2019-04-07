@@ -1,10 +1,10 @@
 <div class="container">
- <h3 class="homes-header my-5">Homes For Sale</h3>
+ <h3 class="my-5">Homes For Sale</h3>
  <div class="row my-4">
       <div *ngFor="let home of homes" class="col-sm-6 col-md-4 col-lg-3">
         <app-home-item [home]="home"></app-home-item>
       </div>
-    </div>
+  </div>
 
     <div class="d-flex justify-content-center mt-5">
       <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" 
@@ -12,7 +12,6 @@
                   [itemsPerPage]="pagination.pageSize"
                   (pageChanged)="pageChanged($event)"
                 previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
-     
       </pagination>
     </div>
 </div>

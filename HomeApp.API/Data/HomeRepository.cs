@@ -48,6 +48,15 @@ namespace HomeApp.API.Data
         public async Task<IEnumerable<Home>> GetHomesByUser(int id)
         {
             return await _context.Homes.Include(h => h.Photos).Include(h => h.User).Where(h => h.User.Id == id).OrderByDescending(h => h.DateAdded).ToListAsync();
+
+        }
+
+        public async Task<PagedList<Home>> GetFavHomesByUser(int id, HomeParams homeParams)
+        {
+            var user = await _context.Users.Include(u => u.Favorites).FirstOrDefaultAsync(u => u.Id == id);
+            var userFavHomeIds = user.Favorites.Select(f => f.HomeId);
+            var homes = _context.Homes.Include(h => h.Photos).Include(h => h.User).Where(h => userFavHomeIds.Contains(h.Id)).OrderByDescending(h => h.DateAdded).AsQueryable();
+            return await PagedList<Home>.CreatePagedListAsync(homes, homeParams.CurrentPage, homeParams.PageSize);
         }
 
          public async Task<Photo> GetPhoto(int homeId, int id)

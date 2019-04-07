@@ -24,6 +24,7 @@ import { AddHomeComponent } from './home/add-home/add-home.component';
 import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 import { EditHomeComponent } from './home/edit-home/edit-home.component';
 import { UserHomesComponent } from './home/user-homes/user-homes.component';
+import { FavHomesComponent } from './home/fav-homes/fav-homes.component';
 
 
 export function tokenGetter() {
@@ -46,7 +47,8 @@ export function tokenGetter() {
       AddHomeComponent,
       EditHomeComponent,
       PhotoUploadComponent,
-      UserHomesComponent
+      UserHomesComponent,
+      FavHomesComponent
    ],
    imports: [
       BrowserModule,

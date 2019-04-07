@@ -22,7 +22,7 @@ getHomes(currentPage?, pageSize?): Observable<PaginatedResult<Home[]>> {
         params = params.append('currentPage', currentPage);
         params = params.append('pageSize', pageSize);
     }
-    console.log(params);
+
     return this.http.get<Home[]>(this.baseUrl + 'homes', { observe: 'response', params: params }).pipe(
         map(response => {
             paginatedResult.result = response.body;
@@ -36,6 +36,24 @@ getHomes(currentPage?, pageSize?): Observable<PaginatedResult<Home[]>> {
 
 getHomesByUser(): Observable<Home[]> {
     return this.http.get<Home[]>(this.baseUrl + 'homes/myHomes');
+}
+
+getFavHomesByUser(currentPage?, pageSize?): Observable<PaginatedResult<Home[]>> {
+    const paginatedResult: PaginatedResult<Home[]> = new PaginatedResult<Home[]>();
+    let params = new HttpParams();
+    if (currentPage != null && pageSize != null) {
+        params = params.append('currentPage', currentPage);
+        params = params.append('pageSize', pageSize);
+    }
+    return this.http.get<Home[]>(this.baseUrl + 'homes/favorites', { observe: 'response', params }).pipe(
+        map(response => {
+            paginatedResult.result = response.body;
+            if (response.headers.get('Pagination') != null) {
+              paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+            }
+            return paginatedResult;
+        })
+    );
 }
 
 getHome(id: number): Observable<Home> {
