@@ -1,0 +1,60 @@
+.form-group label {
+    font-size: .9rem;
+}
+
+.form-buttons {
+    margin-top: .8rem;
+    width: 100%;
+}
+
+@media (max-width: 575.98px) { 
+
+    .ff {
+        display: inline-block;
+    }
+
+    label {
+        width: 100%;
+        justify-content: start;
+        margin: .4rem 0;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+ }
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    
+    .form-group label {
+        font-size: .7rem;
+    }
+ }
+
+ @media (max-width: 767.98px) { 
+     .sq {
+         margin-top: .8rem;
+     }
+  }
+
+  /* order by buttons */
+
+.active {
+    color:#F3969A !important;
+}
+
+.ob label {
+    font-size: .9rem;
+}
+
+.ob button {
+    font-size: .75rem;
+    background-color: white !important; 
+}
+
+@media (max-width: 575.98px) {
+    .ob button {
+        display: block;
+        margin-bottom: .5rem;
+    }
+ }

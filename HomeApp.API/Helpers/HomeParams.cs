@@ -10,5 +10,11 @@ namespace HomeApp.API.Helpers
             get { return pageSize; }
             set { pageSize = value > MaxPageSize ? MaxPageSize : value; }
         }
+        public int Bed { get; set; } = 1;
+        public int Bath { get; set; } = 1;
+        public int MinPrice { get; set; } = 1;
+        public int MaxPrice { get; set; } = 10000000;
+        public string OrderBy { get; set; }
+        public string SearchQuery { get; set; }
     }
 }

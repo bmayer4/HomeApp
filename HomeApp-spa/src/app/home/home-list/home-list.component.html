@@ -1,5 +1,68 @@
 <div class="container">
  <h3 class="my-5">Homes For Sale</h3>
+
+ <div class="row">
+  <div class="col">
+  <form #filterForm="ngForm" (ngSubmit)="getHomes()" class="form-inline ff"> 
+    <div class="form-group mr-2">
+        <label for="minPrice" class="mr-2">Min:</label>
+        <select class="form-control form-control-sm" [(ngModel)]="homeParams.minPrice" style="width: 85px" id="minPrice" name="minPrice">
+            <option *ngFor="let p of minPrice" [value]="p.value">
+                {{ p.display }}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group mr-2">
+        <label for="maxPrice" class="mr-2">Max:</label>
+        <select class="form-control form-control-sm" [(ngModel)]="homeParams.maxPrice" style="width: 85px" id="maxPrice" name="maxPrice">
+            <option *ngFor="let p of maxPrice" [value]="p.value">
+                {{ p.display }}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group mr-2">
+        <label for="bed" class="mr-2">Bed:</label>
+        <select class="form-control form-control-sm" [(ngModel)]="homeParams.bed" style="width: 65px" id="bed" name="bed">
+            <option *ngFor="let b of bed" [value]="b">
+                {{ b }}+
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group mr-4">
+        <label for="bath" class="mr-2">Bath:</label>
+        <select class="form-control form-control-sm" [(ngModel)]="homeParams.bath" style="width: 65px" id="bath" name="bath">
+            <option *ngFor="let b of bath" [value]="b">
+                {{ b }}+
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control form-control-sm sq" name="searchQuery" placeholder="Search" [(ngModel)]="homeParams.searchQuery" style="width: 160px">
+    </div>
+
+    <div class="form-buttons">
+    <button class="btn btn-sm btn-primary mr-2" type="submit">Search</button>
+    <button class="btn btn-sm btn-light" type="button" (click)="resetFilters()">Clear filters</button>
+    </div>
+  </form>
+  </div>
+ </div>
+
+ <div class="row my-3">
+   <div class="col">
+    <div class="ob">
+    <label class="mr-1">Order by:</label>
+    <button class="mx-1 btn btn-sm btn-light" (click)="orderBy('')" [class.active]="homeParams.orderBy === ''">Date Added</button>
+    <button class="mx-1 btn btn-sm btn-light" (click)="orderBy('priceasc')" [class.active]="homeParams.orderBy === 'priceasc'">Price - low to high</button>
+    <button class="mx-1 btn btn-sm btn-light" (click)="orderBy('pricedesc')" [class.active]="homeParams.orderBy === 'pricedesc'">Price - high to low</button>
+    </div>
+  </div>
+ </div>
+
  <div class="row my-4">
       <div *ngFor="let home of homes" class="col-sm-6 col-md-4 col-lg-3">
         <app-home-item [home]="home"></app-home-item>

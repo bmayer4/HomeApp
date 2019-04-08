@@ -15,12 +15,41 @@ baseUrl = environment.apiUrl;
 
 constructor(private http: HttpClient) { }
 
-getHomes(currentPage?, pageSize?): Observable<PaginatedResult<Home[]>> {
+getHomes(currentPage?, pageSize?, homeParams?): Observable<PaginatedResult<Home[]>> {
     const paginatedResult: PaginatedResult<Home[]> = new PaginatedResult<Home[]>();
     let params = new HttpParams();
+
     if (currentPage != null && pageSize != null) {
         params = params.append('currentPage', currentPage);
         params = params.append('pageSize', pageSize);
+    }
+
+    if (homeParams) {
+
+        if (homeParams.minPrice) {
+            params = params.append('minPrice', homeParams.minPrice);
+        }
+
+        if (homeParams.maxPrice) {
+            params = params.append('maxPrice', homeParams.maxPrice);
+        }
+
+        if (homeParams.bed) {
+            params = params.append('bed', homeParams.bed);
+        }
+
+        if (homeParams.bath) {
+            params = params.append('bath', homeParams.bath);
+        }
+
+        if (homeParams.searchQuery) {
+            params = params.append('searchQuery', homeParams.searchQuery);
+        }
+
+        if (homeParams.orderBy) {
+            params = params.append('orderBy', homeParams.orderBy);
+        }
+
     }
 
     return this.http.get<Home[]>(this.baseUrl + 'homes', { observe: 'response', params: params }).pipe(

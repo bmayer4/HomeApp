@@ -42,6 +42,48 @@ namespace HomeApp.API.Data
         public async Task<PagedList<Home>> GetHomes(HomeParams homeParams)
         {
             var homes = _context.Homes.Include(h => h.Photos).Include(h => h.User).Include(h => h.Favorites).OrderByDescending(h => h.DateAdded).AsQueryable();
+
+            if (homeParams.Bed != 1)
+            {
+                homes = homes.Where(h => h.Bedrooms >= homeParams.Bed);
+            }
+
+            if (homeParams.Bath != 1)
+            {
+                homes = homes.Where(h => h.Bathrooms >= homeParams.Bath);
+            }
+
+            if (homeParams.MinPrice != 1 || homeParams.MaxPrice != 10000000)
+            {
+                homes = homes.Where(h => h.Price >= homeParams.MinPrice && h.Price <= homeParams.MaxPrice);
+            }
+
+            if (!string.IsNullOrEmpty(homeParams.SearchQuery))
+            {
+                var searchQueryClause = homeParams.SearchQuery.Trim().ToLowerInvariant();
+                homes = homes.Where(h => 
+                h.City.ToLowerInvariant().Contains(searchQueryClause) ||
+                h.Street.ToLowerInvariant().Contains(searchQueryClause) ||
+                h.State.ToLowerInvariant().Contains(searchQueryClause)
+                );
+            }
+
+            if (!string.IsNullOrEmpty(homeParams.OrderBy))
+            {
+                switch (homeParams.OrderBy.Trim().ToLowerInvariant())
+                {
+                    case "priceasc":
+                        homes = homes.OrderBy(h => h.Price);
+                        break;
+                    case "pricedesc":
+                        homes = homes.OrderByDescending(h => h.Price);
+                        break;
+                    default:
+                        homes = homes.OrderBy(h => h.DateAdded);
+                        break;
+                }
+            }
+
             return await PagedList<Home>.CreatePagedListAsync(homes, homeParams.CurrentPage, homeParams.PageSize);
         }
 
