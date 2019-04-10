@@ -7,27 +7,45 @@
     <div class="collapse navbar-collapse n" [collapse]="isCollapsed">
       <a class="navbar-brand" [routerLink]="['/']">HomeApp</a>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <a class="nav-link" [routerLink]="['/homes']">Homes</a>
-        </li>
-        <li *ngIf="isAuth()" class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/homes/add']">Add Home</a>
-        </li>
-        <li *ngIf="isAuth()" class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/homes/myHomes']">My Homes</a>
-        </li>
-        <li *ngIf="isAuth()" class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/homes/favorites']">My Favorites</a>
-        </li>
-        <li *ngIf="!isAuth()" class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/register']">Register</a>
-        </li>
-        <li *ngIf="!isAuth()" class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/login']">Login</a>
-        </li>
-        <li *ngIf="isAuth()" class="nav-item" routerLinkActive="active">
-          <a class="nav-link" (click)="logout()">Logout</a>
-        </li>
+            <div class="d-block d-sm-none">
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" [routerLink]="['/homes']" (click)="isCollapsed = !isCollapsed">Homes</a>
+            </li>
+            <li *ngIf="isAuth()" class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/homes/myHomes']" (click)="isCollapsed = !isCollapsed">My Homes</a>
+            </li>
+            <li *ngIf="isAuth()" class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/homes/favorites']" (click)="isCollapsed = !isCollapsed">Favorites</a>
+            </li>
+            <li *ngIf="isAuth()" class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/homes/add']" (click)="isCollapsed = !isCollapsed">Add Home</a>
+            </li>
+            <li *ngIf="isAuth()" class="nav-item" routerLinkActive="active">
+              <a class="nav-link" (click)="logout()" (click)="isCollapsed = !isCollapsed">Logout</a>
+            </li>
+          </div>
+          <li *ngIf="!isAuth()" class="nav-item" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/register']">Register</a>
+          </li>
+          <li *ngIf="!isAuth()" class="nav-item" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/login']">Login</a>
+          </li>
+      </ul>
+
+      <div *ngIf="isAuth()" class="dropdown d-none d-sm-block" dropdown>
+          <a class="dropdown-toggle nav-link text-light" routerLinkActive="active" dropdownToggle>Welcome</a>
+          <div class="dropdown-menu mt-3" *dropdownMenu>
+            <a class="dropdown-item" [routerLink]="['/homes']">Homes</a>
+            <a class="dropdown-item" [routerLink]="['/homes/myHomes']">My Homes</a>
+            <a class="dropdown-item" [routerLink]="['/homes/favorites']">Favorites</a>
+            <a class="dropdown-item" [routerLink]="['/homes/add']">Add Home</a>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
+      </div>
+      <ul class="navbar-nav d-none d-sm-block">
+          <li *ngIf="isAuth()" class="nav-item" routerLinkActive="active">
+              <a class="nav-link" (click)="logout()">Logout</a>
+          </li>
       </ul>
 
     </div>

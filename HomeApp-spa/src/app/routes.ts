@@ -13,16 +13,18 @@ import { HomesResolver } from './_resolvers/homes.resolver';
 import { UserHomesResolver } from './_resolvers/user-homes.resolver';
 import { FavHomesComponent } from './home/fav-homes/fav-homes.component';
 import { FavHomesResolver } from './_resolvers/fav-homes.resolver';
+import { AuthGuard } from './_guards/auth.guard';
+import { PublicGuard } from './_guards/public.guard';
 
 // more specific routes should be placed above less specific routes
 export const appRoutes: Routes = [
     { path: '', component: LandingComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'homes/add', component: AddHomeComponent },
-    { path: 'homes/myHomes', component: UserHomesComponent, resolve: { homes: UserHomesResolver }},
-    { path: 'homes/favorites', component: FavHomesComponent, resolve: { homes: FavHomesResolver }},
-    { path: 'homes/edit/:id', component: EditHomeComponent, resolve: { home: HomeEditResolver }},
+    { path: 'register', component: RegisterComponent, canActivate: [PublicGuard] },
+    { path: 'login', component: LoginComponent, canActivate: [PublicGuard] },
+    { path: 'homes/add', component: AddHomeComponent, canActivate: [AuthGuard] },
+    { path: 'homes/myHomes', component: UserHomesComponent, canActivate: [AuthGuard], resolve: { homes: UserHomesResolver }},
+    { path: 'homes/favorites', component: FavHomesComponent, canActivate: [AuthGuard], resolve: { homes: FavHomesResolver }},
+    { path: 'homes/edit/:id', component: EditHomeComponent, canActivate: [AuthGuard], resolve: { home: HomeEditResolver }},
     { path: 'homes/:id', component: HomeDetailComponent, resolve: { home: HomeDetailResolver }},
     { path: 'homes', component: HomeListComponent, resolve: { homes: HomesResolver }},
     { path: '**', redirectTo: '', pathMatch: 'full' }
