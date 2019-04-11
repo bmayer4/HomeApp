@@ -12,6 +12,7 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 export class LoginComponent implements OnInit {
 
   model: any = {};
+  serverError: any;
 
   constructor(private authService: AuthService, private router: Router, private as: AlertifyService) { }
 
@@ -19,10 +20,19 @@ export class LoginComponent implements OnInit {
   }
 
   login(loginForm: NgForm) {
+    this.serverError = null;
     this.authService.login(loginForm.value).subscribe(result => {
       this.as.success('Logged in');
+      this.serverError = null;
       this.router.navigate(['/homes']);
-    }, err => console.log(err));
+    }, err => {
+      // tslint:disable-next-line:triple-equals
+      if (err.trim() == 'The Password field is required.') {
+        loginForm.controls.password.setErrors({ required: true });
+      } else {
+        this.serverError = err;
+      }
+    });
   }
 
 }

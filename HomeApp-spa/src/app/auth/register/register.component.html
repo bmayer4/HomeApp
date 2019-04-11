@@ -5,6 +5,7 @@
       <hr>
 <form [formGroup]="registerForm" (ngSubmit)="register()">
     <div class="form-group">
+        <div *ngIf="serverError != null" class="server-feedback text-center">{{ serverError }}</div> 
       <label for="email">Email</label>
       <input 
       type="text" 
@@ -33,6 +34,7 @@
       formControlName="password" 
       [ngClass]="{'is-invalid': registerForm.get('password').errors && registerForm.get('password').touched}">
       <div *ngIf="registerForm.get('password').hasError('minlength') || registerForm.get('password').hasError('maxlength')" class="invalid-feedback">Password must be between 6 and 14 characters</div>
+      <div *ngIf="registerForm.get('password').hasError('digitRequired')" class="invalid-feedback">Password must contain at least 1 number</div>
       <div *ngIf="registerForm.get('password').hasError('required')" class="invalid-feedback">Password required</div>
     </div>
     <div class="form-group">

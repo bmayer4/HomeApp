@@ -13,6 +13,13 @@ namespace HomeApp.API.Helpers
             return daysOnMarket == 0 ? 1 : daysOnMarket;
         }
 
+        public static void AddApplicationError(this HttpResponse response, string message)
+        {
+            response.Headers.Add("Application-Error", message);
+            response.Headers.Add("Access-Control-Expose-Headers", "Application-Error");
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+        }
+
         public static void AddPaginationHeader(this HttpResponse response, int currentPage, int pageSize, int totalPages, int totalItems)
         {
             var paginationHeader = new PaginationHeader(currentPage, pageSize, totalPages, totalItems);

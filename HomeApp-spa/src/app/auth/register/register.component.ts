@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
+  serverError: any;
   bsConfig: Partial<BsDatepickerConfig> = { containerClass: 'theme-default' };
 
   constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) { }
@@ -34,12 +35,24 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    this.serverError = null;
       this.authService.register(this.registerForm.value).subscribe(result => {
-      // TODO - add, get errors working and add for email in use
         this.authService.login(this.registerForm.value).subscribe(() => {
+          this.serverError = null;
           this.router.navigate(['/homes']);
-        }, err => console.log(err));
-      }, err => console.log(err));
+        }, err => this.serverError = err);
+      }, err => {
+        // tslint:disable-next-line:triple-equals
+        if (err.trim() == 'The Password field is required.') {
+          this.registerForm.controls.password.setErrors({ required: true });
+          this.registerForm.controls.confirmPassword.setErrors({ required: true });
+        // tslint:disable-next-line:triple-equals
+        } else if (err.trim() == 'Passwords must have at least one digit (\'0\'-\'9\').') {
+          this.registerForm.controls.password.setErrors({ digitRequired: true });
+        } else {
+          this.serverError = err;
+        }
+      });
   }
 
 }

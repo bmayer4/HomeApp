@@ -7,8 +7,11 @@
     <div class="collapse navbar-collapse n" [collapse]="isCollapsed">
       <a class="navbar-brand" [routerLink]="['/']">HomeApp</a>
       <ul class="navbar-nav ml-auto">
+          <li *ngIf="!isAuth()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a class="nav-link" [routerLink]="['/homes']" (click)="isCollapsed = !isCollapsed">Homes</a>
+          </li>
             <div class="d-block d-sm-none">
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li *ngIf="isAuth()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" [routerLink]="['/homes']" (click)="isCollapsed = !isCollapsed">Homes</a>
             </li>
             <li *ngIf="isAuth()" class="nav-item" routerLinkActive="active">

@@ -121,7 +121,7 @@ namespace HomeApp.API.Controllers
 
             if (!await _repo.SaveAll())
             {
-                throw new Exception("Failed to create home");
+                throw new Exception("Failed to create home");  //changing to below, not getting ths on front end
             }
 
             var homeToReturn = _mapper.Map<HomeForDetailDto>(homeEntity);

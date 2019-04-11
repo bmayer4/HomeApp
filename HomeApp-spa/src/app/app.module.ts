@@ -25,6 +25,7 @@ import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 import { EditHomeComponent } from './home/edit-home/edit-home.component';
 import { UserHomesComponent } from './home/user-homes/user-homes.component';
 import { FavHomesComponent } from './home/fav-homes/fav-homes.component';
+import { ErrorInterceptorProvider } from './_services/error.interceptor';
 
 
 export function tokenGetter() {
@@ -71,7 +72,9 @@ export function tokenGetter() {
          }
       })
    ],
-   providers: [],
+   providers: [
+      ErrorInterceptorProvider
+   ],
    bootstrap: [
       AppComponent
    ]
