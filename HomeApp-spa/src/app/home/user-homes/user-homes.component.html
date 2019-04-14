@@ -6,31 +6,31 @@
       <a [routerLink]="['/homes/add']">Go to - Add Home</a>
       </div>
 
-    <div *ngIf="userHomes.length">
+    <div *ngIf="userHomes.length" class="col-sm-10 mx-auto">
     <h3 class="text-center my-5 px-2">My Homes</h3>
-          <table class="table">
-            <thead class="">
-            <tr>
-              <th style="width: 10%;">Id</th>
-              <th style="width: 50%;">Street</th>
-              <th style="width: 25%;">Date Added</th>
-              <th style="width: 15%;"></th>
-            </tr>
-              </thead>
-              <tbody>
+        <table class="table">
+            <thead>
+              <tr>
+                <th style="width: 10%;">Id</th>
+                <th style="width: 50%;">Address</th>
+                <th style="width: 25%;">Date Added</th>
+                <th style="width: 15%;"></th>
+              </tr>
+            </thead>
+            <tbody>
             <tr *ngFor="let home of userHomes">
               <td>{{ home.id }}</td>
-              <td>{{ home.street }}</td>
+              <td>{{ home.street }}, {{ home.city }}, {{ home.state }}</td>
               <td>{{ home.dateAdded | date }}</td>
               <td>
                 <div class="d-flex">
-                <button class="btn btn-sm btn-info mr-1" [routerLink]="['/homes/edit/', home.id]">Edit</button>
-                <button class="btn btn-sm btn-info" (click)="deleteHome(home.id)"><i class="fa fa-trash-o"></i></button>
+                <button class="btn btn-sm btn-secondary mr-1" [routerLink]="['/homes/edit/', home.id]">Edit</button>
+                <button class="btn btn-sm btn-secondary" (click)="deleteHome(home.id)"><i class="fa fa-trash-o"></i></button>
                 </div>
               </td>
             </tr>
           </tbody>
           </table>
         </div>
-        </div>
-        </div>
+      </div>
+    </div>

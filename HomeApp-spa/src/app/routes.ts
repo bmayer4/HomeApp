@@ -8,6 +8,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { AddHomeComponent } from './home/add-home/add-home.component';
 import { EditHomeComponent } from './home/edit-home/edit-home.component';
 import { UserHomesComponent } from './home/user-homes/user-homes.component';
+import { AdminComponent } from './admin/admin/admin.component';
 import { HomeEditResolver } from './_resolvers/home-edit.resolver';
 import { HomesResolver } from './_resolvers/homes.resolver';
 import { UserHomesResolver } from './_resolvers/user-homes.resolver';
@@ -27,6 +28,8 @@ export const appRoutes: Routes = [
     { path: 'homes/edit/:id', component: EditHomeComponent, canActivate: [AuthGuard], resolve: { home: HomeEditResolver }},
     { path: 'homes/:id', component: HomeDetailComponent, resolve: { home: HomeDetailResolver }},
     { path: 'homes', component: HomeListComponent, resolve: { homes: HomesResolver }},
+    // tslint:disable-next-line:max-line-length
+    { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], resolve: { homes: HomesResolver }, data: { roles: ['Admin', 'Moderator'] } },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

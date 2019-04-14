@@ -19,11 +19,18 @@ namespace HomeApp.API.Controllers
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
 
-        public AdminController(AppDbContext context, UserManager<User> userManager, RoleManager<Role> roleManager)
+        private readonly IHomeRepository _repo;
+
+        public AdminController(
+            AppDbContext context, 
+            UserManager<User> userManager, 
+            RoleManager<Role> roleManager,
+            IHomeRepository repo)
         {
             _context = context;
             _userManager = userManager;
             _roleManager = roleManager;
+            _repo = repo;
         }
 
         [Authorize(Policy = "RequireAdminRole")]
@@ -44,8 +51,13 @@ namespace HomeApp.API.Controllers
 
         [Authorize(Policy = "RequireAdminRole")]
         [HttpPatch("editRoles/{id}")]
-        public async Task<IActionResult> EditUserRole(int id, [FromBody] RoleEditDto roleEditDto)
+        public async Task<IActionResult> EditUserRoles(int id, [FromBody] RoleEditDto roleEditDto)
         {
+            if (roleEditDto == null)
+            {
+                return BadRequest();
+            }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -55,7 +67,7 @@ namespace HomeApp.API.Controllers
 
             if (userFromRepo == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
             var userRoles = await _userManager.GetRolesAsync(userFromRepo);
@@ -92,6 +104,27 @@ namespace HomeApp.API.Controllers
             }
 
             return Ok(await _userManager.GetRolesAsync(userFromRepo));
+        }
+
+        [Authorize(Policy = "RequireModeratorRole")]
+        [HttpDelete("homes/{id}")]
+        public async Task<IActionResult> DeleteHomeByModerator(int id)
+        {
+            var homeFromRepo = await _repo.GetHome(id);
+
+            if (homeFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _repo.Delete(homeFromRepo);
+
+            if (!await _repo.SaveAll())
+            {
+                throw new Exception($"Deleting home {id} failed.");
+            }
+
+            return NoContent();
         }
 
     }

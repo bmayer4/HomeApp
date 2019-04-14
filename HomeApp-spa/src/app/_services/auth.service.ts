@@ -26,6 +26,7 @@ export class AuthService {
         localStorage.setItem('token', response.token);
         localStorage.setItem('user', JSON.stringify(response.user));
         this.decodedToken = this.jwtHelper.decodeToken(response.token);
+        console.log(this.decodedToken);
         this.currentUser = response.user;
       }));
   }
@@ -40,5 +41,17 @@ export class AuthService {
     localStorage.removeItem('user');
     this.decodedToken = null;
     this.currentUser = null;
+  }
+
+  roleMatch(requiredRoles: string[]): boolean {
+    if (this.isAuth()) {
+      const userRoles = this.decodedToken.role as string[];
+      for (const role of requiredRoles) {
+        if (userRoles.includes(role)) {
+          return true;
+        }
+      }
+      return false;
+    }
   }
 }

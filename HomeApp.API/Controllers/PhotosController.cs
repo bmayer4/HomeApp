@@ -19,7 +19,7 @@ namespace HomeApp.API.Controllers
     [ApiController]
     public class PhotosController: ControllerBase
     {
-         private readonly IMapper _mapper;
+        private readonly IMapper _mapper;
         private readonly IHomeRepository _repo;
         private readonly IOptions<CloudinarySettings> _cloudinaryConfig;
         private Cloudinary _cloudinary;
@@ -46,7 +46,7 @@ namespace HomeApp.API.Controllers
             var photoFromRepo = await _repo.GetPhoto(homeId, id);
 
             if (photoFromRepo == null) {
-                return BadRequest();
+                return NotFound();
             }
 
             var photoToReturn = _mapper.Map<PhotoForReturnDto>(photoFromRepo);
@@ -57,6 +57,11 @@ namespace HomeApp.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPhotoForHome(int homeId, [FromForm] PhotoForCreationDto photoForCreationDto)
         {
+            if (photoForCreationDto == null) 
+            {
+                return BadRequest();
+            }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -74,7 +79,7 @@ namespace HomeApp.API.Controllers
             var homeFromRepo = await _repo.GetHome(homeId);
 
             if (homeFromRepo == null) {
-                return BadRequest();
+                return NotFound();
             }
 
             if (homeFromRepo.UserId != userId)
@@ -136,7 +141,7 @@ namespace HomeApp.API.Controllers
             var homeFromRepo = await _repo.GetHome(homeId);
 
             if (homeFromRepo == null) {
-                return BadRequest();
+                return NotFound();
             }
 
             if (homeFromRepo.UserId != userId)
@@ -147,7 +152,7 @@ namespace HomeApp.API.Controllers
             var photoFromRepo = await _repo.GetPhoto(homeId, id);
 
             if (photoFromRepo == null) {
-                return BadRequest();
+                return NotFound();
             }
 
             if (photoFromRepo.IsCover)
@@ -159,7 +164,7 @@ namespace HomeApp.API.Controllers
 
             if (currentCoverPhoto == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
             currentCoverPhoto.IsCover = false;
@@ -189,7 +194,7 @@ namespace HomeApp.API.Controllers
             var homeFromRepo = await _repo.GetHome(homeId);
 
             if (homeFromRepo == null) {
-                return BadRequest();
+                return NotFound();
             }
 
             if (homeFromRepo.UserId != userId)
@@ -200,7 +205,7 @@ namespace HomeApp.API.Controllers
             var photoFromRepo = await _repo.GetPhoto(homeId, id);
 
             if (photoFromRepo == null) {
-                return BadRequest();
+                return NotFound();
             }
 
             if (photoFromRepo.IsCover)

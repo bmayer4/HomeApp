@@ -44,10 +44,7 @@ namespace HomeApp.API.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
-                    City = table.Column<string>(nullable: true),
-                    Country = table.Column<string>(nullable: true),
-                    Created = table.Column<DateTime>(nullable: false),
-                    IsProfessional = table.Column<bool>(nullable: false)
+                    Created = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -169,6 +166,7 @@ namespace HomeApp.API.Migrations
                     Street = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     State = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
                     Price = table.Column<int>(nullable: false),
                     Bedrooms = table.Column<int>(nullable: false),
                     Bathrooms = table.Column<int>(nullable: false),
@@ -187,6 +185,30 @@ namespace HomeApp.API.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Favorites",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false),
+                    HomeId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Favorites", x => new { x.UserId, x.HomeId });
+                    table.ForeignKey(
+                        name: "FK_Favorites_Homes_HomeId",
+                        column: x => x.HomeId,
+                        principalTable: "Homes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Favorites_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -252,6 +274,11 @@ namespace HomeApp.API.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Favorites_HomeId",
+                table: "Favorites",
+                column: "HomeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Homes_UserId",
                 table: "Homes",
                 column: "UserId");
@@ -278,6 +305,9 @@ namespace HomeApp.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Favorites");
 
             migrationBuilder.DropTable(
                 name: "Photos");

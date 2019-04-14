@@ -1,7 +1,6 @@
-<div class="container">
-    <div class="my-5">
+<div class="container my-5">
             <div class="row">
-              <div class="col-md-6 mx-auto">
+              <div class="col-sm-8 col-md-6 mx-auto">
                   <h2 class="text-center text-primary">Add Home</h2>
                   <hr>
                 <form #addHomeForm="ngForm" (ngSubmit)="addHome()" class="mt-4">
@@ -22,7 +21,7 @@
                     
                     <div class="form-group">
                     <div class="form-row">
-                    <div class="col-6">
+                    <div class="col-8">
                         <input type="text" 
                         class="form-control mr-2" 
                         name="city" 
@@ -35,7 +34,7 @@
                         <div class="invalid-feedback">City required</div>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-4">
                         <input type="text" 
                         class="form-control" 
                         name="state" 
@@ -148,5 +147,4 @@
                 </form>
               </div>
             </div>
-      </div>
 </div>

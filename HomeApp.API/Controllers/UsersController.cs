@@ -30,6 +30,7 @@ namespace HomeApp.API.Controllers
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repo.GetUser(id);
+
             if (user == null)
             {
                 return NotFound();
@@ -49,14 +50,14 @@ namespace HomeApp.API.Controllers
 
             if (user == null)  
             {
-                return NotFound();
+                return Unauthorized();
             }   
 
             var homeFromRepo = await _repo.GetHome(homeId);
 
             if (homeFromRepo == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
             var favoriteFromRepo = await _repo.GetFavorite(userId, homeId);

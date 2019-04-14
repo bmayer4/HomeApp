@@ -26,8 +26,9 @@ namespace HomeApp.API.Data
             if (!_userManager.Users.Any()) {  
 
                 var roles = new List<Role> {
-                    new Role() { Name = "Member" },
                     new Role() { Name = "Admin" },
+                    new Role { Name = "Moderator" },
+                    new Role() { Name = "Member" },
                 };
 
                 foreach (var role in roles) {
@@ -46,7 +47,7 @@ namespace HomeApp.API.Data
                 if (result.Succeeded)
                 {
                     var admin = _userManager.FindByEmailAsync("admin@admin.com".Normalize()).Result;
-                    _userManager.AddToRolesAsync(admin, new[] { "Admin", "Member" }).Wait();
+                    _userManager.AddToRolesAsync(admin, new[] { "Admin", "Moderator" }).Wait();
                 } 
             }
 
@@ -55,7 +56,7 @@ namespace HomeApp.API.Data
                 var homeData = System.IO.File.ReadAllText("Data/HomeSeedData.json");
                 var homes = JsonConvert.DeserializeObject<List<Home>>(homeData);
 
-            _context.Homes.AddRange(homes);  //hmmm  //wasnt homes before
+            _context.Homes.AddRange(homes);
             _context.SaveChanges();
             }
     }

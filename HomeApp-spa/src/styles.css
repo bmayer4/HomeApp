@@ -7,6 +7,13 @@
 @import '../node_modules/alertifyjs/build/css/alertify.min.css';
 @import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
 
+/* tabset */
+.tab-panel {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+}
+
 /* heading titles */
 .home-tabset > .nav-tabs > li.active > a {  
     color: #56CC9D;
@@ -22,7 +29,9 @@
     border-color: #56CC9D;
 }
 
-.page-item.active .page-link {
-    /* background-color:#ccc;
-    border-color: #ccc;  */
-}
+/* .page-item.active .page-link {
+    background-color:#ccc;
+    border-color: #ccc;  
+} */
+
+

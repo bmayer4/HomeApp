@@ -34,7 +34,7 @@ namespace HomeApp.API.Controllers
 
             if (homeFromRepo == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
             var homeToReturn = _mapper.Map<HomeForDetailDto>(homeFromRepo);
@@ -64,7 +64,7 @@ namespace HomeApp.API.Controllers
 
             if (user == null)  
             {
-                return NotFound();
+                return Unauthorized();
             }
 
             var userHomesFromRepo = await _repo.GetHomesByUser(user.Id);
@@ -84,7 +84,7 @@ namespace HomeApp.API.Controllers
 
             if (user == null)  
             {
-                return NotFound();
+                return Unauthorized();
             }
 
             var favHomesByUserFromRepo = await _repo.GetFavHomesByUser(userId, homeParams);
@@ -99,6 +99,12 @@ namespace HomeApp.API.Controllers
         [HttpPost]  //not making userId part of url, not part of home functionality
         public async Task<IActionResult> CreateHome([FromBody] HomeForCreationDto homeForCreationDto)
         {
+
+            if (homeForCreationDto == null) 
+            {
+                return BadRequest();
+            }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -110,7 +116,7 @@ namespace HomeApp.API.Controllers
 
             if (user == null)  // probably not necessary since user is found
             {
-                return NotFound();
+                return Unauthorized();
             }
 
             var homeEntity = _mapper.Map<Home>(homeForCreationDto);
@@ -121,7 +127,7 @@ namespace HomeApp.API.Controllers
 
             if (!await _repo.SaveAll())
             {
-                throw new Exception("Failed to create home");  //changing to below, not getting ths on front end
+                throw new Exception("Failed to create home");
             }
 
             var homeToReturn = _mapper.Map<HomeForDetailDto>(homeEntity);
@@ -132,6 +138,11 @@ namespace HomeApp.API.Controllers
         [HttpPatch("{id}")]
         public async Task<IActionResult> UpdateHome(int id, [FromBody] HomeForUpdateDto homeForUpdateDto)
         {
+            if (homeForUpdateDto == null) 
+            {
+                return BadRequest();
+            }
+
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
              var user = await _repo.GetUser(userId);
@@ -143,8 +154,9 @@ namespace HomeApp.API.Controllers
 
             var homeFromRepo = await _repo.GetHome(id);
 
-            if (homeFromRepo == null) {
-                return BadRequest();
+            if (homeFromRepo == null) 
+            {
+                return NotFound();
             }
 
             if (homeFromRepo.UserId != userId)
@@ -176,8 +188,9 @@ namespace HomeApp.API.Controllers
 
             var homeFromRepo = await _repo.GetHome(id);
 
-            if (homeFromRepo == null) {
-                return Unauthorized();
+            if (homeFromRepo == null) 
+            {
+                return NotFound();
             }
 
             if (homeFromRepo.UserId != userId)
@@ -187,7 +200,7 @@ namespace HomeApp.API.Controllers
 
             _repo.Delete(homeFromRepo);
 
-            if (! await _repo.SaveAll())
+            if (!await _repo.SaveAll())
             {
                 throw new Exception($"Deleting home {id} failed."); 
             }

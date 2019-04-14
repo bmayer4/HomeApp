@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HomeApp.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190312053859_initial")]
+    [Migration("20190411223602_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,19 @@ namespace HomeApp.API.Migrations
                 .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("HomeApp.API.Models.Favorite", b =>
+                {
+                    b.Property<int>("UserId");
+
+                    b.Property<int>("HomeId");
+
+                    b.HasKey("UserId", "HomeId");
+
+                    b.HasIndex("HomeId");
+
+                    b.ToTable("Favorites");
+                });
 
             modelBuilder.Entity("HomeApp.API.Models.Home", b =>
                 {
@@ -34,6 +47,8 @@ namespace HomeApp.API.Migrations
                     b.Property<string>("City");
 
                     b.Property<DateTime>("DateAdded");
+
+                    b.Property<string>("Description");
 
                     b.Property<int>("Price");
 
@@ -112,12 +127,8 @@ namespace HomeApp.API.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<string>("City");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
-
-                    b.Property<string>("Country");
 
                     b.Property<DateTime>("Created");
 
@@ -127,8 +138,6 @@ namespace HomeApp.API.Migrations
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
-
-                    b.Property<bool>("IsProfessional");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -247,6 +256,19 @@ namespace HomeApp.API.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("HomeApp.API.Models.Favorite", b =>
+                {
+                    b.HasOne("HomeApp.API.Models.Home", "Home")
+                        .WithMany("Favorites")
+                        .HasForeignKey("HomeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("HomeApp.API.Models.User", "User")
+                        .WithMany("Favorites")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("HomeApp.API.Models.Home", b =>

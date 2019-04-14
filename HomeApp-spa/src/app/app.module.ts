@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
-import { CollapseModule, TabsModule, BsDatepickerModule, PaginationModule, BsDropdownModule } from 'ngx-bootstrap';
+import { CollapseModule, TabsModule, BsDatepickerModule, PaginationModule, BsDropdownModule, ModalModule } from 'ngx-bootstrap';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
 
@@ -26,6 +26,11 @@ import { EditHomeComponent } from './home/edit-home/edit-home.component';
 import { UserHomesComponent } from './home/user-homes/user-homes.component';
 import { FavHomesComponent } from './home/fav-homes/fav-homes.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
+import { HasRoleDirective } from './_directives/has-role.directive';
+import { AdminComponent } from './admin/admin/admin.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
+import { HomeManagementComponent } from './admin/home-management/home-management.component';
 
 
 export function tokenGetter() {
@@ -49,7 +54,12 @@ export function tokenGetter() {
       EditHomeComponent,
       PhotoUploadComponent,
       UserHomesComponent,
-      FavHomesComponent
+      FavHomesComponent,
+      AdminComponent,
+      UserManagementComponent,
+      RolesModalComponent,
+      HomeManagementComponent,
+      HasRoleDirective
    ],
    imports: [
       BrowserModule,
@@ -57,13 +67,14 @@ export function tokenGetter() {
       FormsModule,
       ReactiveFormsModule,
       FileUploadModule,
+      NgxGalleryModule,
       RouterModule.forRoot(appRoutes),
       CollapseModule.forRoot(),
       BsDatepickerModule.forRoot(),
       BsDropdownModule.forRoot(),
       TabsModule.forRoot(),
       PaginationModule.forRoot(),
-      NgxGalleryModule,
+      ModalModule.forRoot(),
       JwtModule.forRoot({
          config: {
             tokenGetter: tokenGetter,
@@ -74,6 +85,9 @@ export function tokenGetter() {
    ],
    providers: [
       ErrorInterceptorProvider
+   ],
+   entryComponents: [
+      RolesModalComponent
    ],
    bootstrap: [
       AppComponent

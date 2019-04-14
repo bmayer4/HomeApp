@@ -71,7 +71,6 @@ namespace HomeApp.API.Controllers
         
             var user = await _userManager.FindByEmailAsync(userForLoginDto.Email.Normalize());
 
-
             if (user == null) 
             {
                 return UnprocessableEntity("Invalid Email or Password");
