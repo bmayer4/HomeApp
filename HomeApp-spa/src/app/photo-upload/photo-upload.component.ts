@@ -51,7 +51,6 @@ export class PhotoUploadComponent implements OnInit {
 
     this.uploader.onSuccessItem = (item, response, status, header) => {
       if (response) {
-        console.log('res', response);
         const res: any = JSON.parse(response);
         this.photos.push(res);
       }
@@ -63,7 +62,7 @@ export class PhotoUploadComponent implements OnInit {
       const currentCover = this.photos.find(p => p.isCover);
       currentCover.isCover = false;
       photo.isCover = true; // set the chosen photo to be cover
-     }, err => console.log(err));
+     }, err => this.as.error(err));
   }
 
   onDelete(id: number) {
@@ -71,7 +70,7 @@ export class PhotoUploadComponent implements OnInit {
       this.photoService.deletePhoto(this.homeId, id).subscribe(res => {
         this.photos = this.photos.filter(p => p.id !== id);
         this.as.success('Photo deleted');
-      }, err => console.log(err));
+      }, err => this.as.error(err));
     });
   }
 

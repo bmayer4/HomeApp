@@ -52,7 +52,7 @@ export class HomeItemComponent implements OnInit {
           this.home.favUserIds.push(userId);
           this.as.success('Home added to favorites');
         }
-      }, err => console.log(err));
+      }, err => this.as.error(err));
   }
 
 }

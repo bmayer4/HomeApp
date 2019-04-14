@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Home } from 'src/app/_models/home';
 import { Pagination, PaginatedResult } from 'src/app/_models/pagination';
 import { HomeService } from 'src/app/_services/home.service';
+import { AlertifyService } from 'src/app/_services/alertify.service';
 
 @Component({
   selector: 'app-fav-homes',
@@ -14,7 +15,7 @@ export class FavHomesComponent implements OnInit {
   favHomes: Home[];
   pagination: Pagination;
 
-  constructor(private route: ActivatedRoute, private homeService: HomeService) { }
+  constructor(private route: ActivatedRoute, private homeService: HomeService, private as: AlertifyService) { }
 
   ngOnInit() {
     this.loadUsersFavHomes();
@@ -24,7 +25,7 @@ export class FavHomesComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.favHomes = data['homes'].result;
       this.pagination = data['homes'].pagination;
-    }, err => console.log(err));
+    }, err => this.as.error(err));
   }
 
  pageChanged(event: any): void {
@@ -36,7 +37,7 @@ export class FavHomesComponent implements OnInit {
    this.homeService.getFavHomesByUser(this.pagination.currentPage, this.pagination.pageSize).subscribe((res: PaginatedResult<Home[]>) => {
      this.favHomes = res.result;
      this.pagination =  res.pagination;
-   }, err => console.log(err));
+   }, err => this.as.error(err));
  }
 
  removeHome() {

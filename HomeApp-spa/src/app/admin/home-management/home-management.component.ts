@@ -40,7 +40,7 @@ export class HomeManagementComponent implements OnInit {
     .subscribe((res: PaginatedResult<Home[]>) => {
       this.homes = res.result;
       this.pagination =  res.pagination;
-    }, err => console.log(err));
+    }, err => this.as.error(err));
   }
 
   deleteHome(homeId: number) {
@@ -48,7 +48,7 @@ export class HomeManagementComponent implements OnInit {
       this.adminService.deleteHomeByModerator(homeId).subscribe(res => {
         this.as.success('Home deleted');
         this.homes = this.homes.filter(h => h.id !== homeId);
-      }, err => console.log(err));
+      }, err => this.as.error(err));
     });
    }
 

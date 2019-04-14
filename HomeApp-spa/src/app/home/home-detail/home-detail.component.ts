@@ -3,6 +3,7 @@ import { HomeService } from 'src/app/_services/home.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { Home } from 'src/app/_models/home';
+import { AlertifyService } from 'src/app/_services/alertify.service';
 
 @Component({
   selector: 'app-home-detail',
@@ -15,7 +16,7 @@ export class HomeDetailComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 
-  constructor(private homeService: HomeService, private route: ActivatedRoute) { }
+  constructor(private homeService: HomeService, private route: ActivatedRoute, private as: AlertifyService) { }
 
   ngOnInit() {
     this.loadHome();
@@ -48,9 +49,7 @@ export class HomeDetailComponent implements OnInit {
   loadHome() {
     this.route.data.subscribe(data => {
       this.home = data['home'];
-    }, err => {
-      console.log(err);
-    });
+    }, err => this.as.error(err));
   }
 
   getImages() {

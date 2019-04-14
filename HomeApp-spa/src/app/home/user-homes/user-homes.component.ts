@@ -21,7 +21,7 @@ export class UserHomesComponent implements OnInit {
   loadUserHomes() {
     this.route.data.subscribe(data => {
       this.userHomes = data['homes'];
-    }, err => console.log(err));
+    }, err => this.as.error(err));
   }
 
   deleteHome(homeId: number) {
@@ -29,7 +29,7 @@ export class UserHomesComponent implements OnInit {
       this.homeService.deleteHome(homeId).subscribe(res => {
         this.as.success('Home deleted');
         this.userHomes = this.userHomes.filter(h => h.id !== homeId);
-      }, err => console.log(err));
+      }, err => this.as.error(err));
     });
    }
 

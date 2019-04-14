@@ -3,6 +3,7 @@ import { HomeService } from 'src/app/_services/home.service';
 import { ActivatedRoute } from '@angular/router';
 import { Home } from 'src/app/_models/home';
 import { Pagination, PaginatedResult } from 'src/app/_models/pagination';
+import { AlertifyService } from 'src/app/_services/alertify.service';
 
 @Component({
   selector: 'app-home-list',
@@ -27,7 +28,7 @@ export class HomeListComponent implements OnInit {
   bath = [1, 2, 3, 4, 5];
   homeParams: any  = {};
 
-  constructor(private homeService: HomeService, private route: ActivatedRoute) { }
+  constructor(private homeService: HomeService, private route: ActivatedRoute, private as: AlertifyService) { }
 
 ngOnInit() {
    this.loadHomesOnInit();
@@ -37,7 +38,7 @@ loadHomesOnInit() {
   this.route.data.subscribe(data => {
     this.homes = data['homes'].result;
     this.pagination = data['homes'].pagination;
-  }, err => console.log(err));
+  }, err => this.as.error(err));
 }
 
 pageChanged(event: any): void {
@@ -46,12 +47,11 @@ pageChanged(event: any): void {
 }
 
 getHomes() {
-  console.log('homeParams: ', this.homeParams);
   this.homeService.getHomes(this.pagination.currentPage, this.pagination.pageSize, this.homeParams)
   .subscribe((res: PaginatedResult<Home[]>) => {
     this.homes = res.result;
     this.pagination =  res.pagination;
-  }, err => console.log(err));
+  }, err => this.as.error(err));
 }
 
 orderBy(orderBy: string): void {

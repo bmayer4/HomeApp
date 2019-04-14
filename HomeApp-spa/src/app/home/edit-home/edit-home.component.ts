@@ -42,13 +42,13 @@ export class EditHomeComponent implements OnInit {
       if (this.home.userId.toString() !== this.authService.decodedToken.nameid) {
         this.router.navigate(['/']);
       }
-    }, err => console.log(err));
+    }, err => this.as.error(err));
   }
 
   updateHome() {
     this.homeService.updateHome(this.home).subscribe(res => {
       this.as.success('Successfully updated');
-    }, err => console.log(err));
+    }, err => this.as.error(err));
   }
 
 }
