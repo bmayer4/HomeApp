@@ -19,6 +19,9 @@
       },
       {
         "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
       }
     ]
   },
@@ -42,6 +45,9 @@
       },
       {
         "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
       }
     ]
   },
@@ -65,6 +71,9 @@
       },
       {
         "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
       }
     ]
   },
@@ -88,6 +97,9 @@
       },
       {
         "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
       }
     ]
   },
@@ -111,6 +123,9 @@
       },
       {
         "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
       }
     ]
   },
@@ -134,6 +149,9 @@
       },
       {
         "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
       }
     ]
   },
@@ -157,6 +175,9 @@
       },
       {
         "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
       }
     ]
   },
@@ -180,6 +201,9 @@
       },
       {
         "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
       }
     ]
   },
@@ -203,6 +227,9 @@
       },
       {
         "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
       }
     ]
   },
@@ -226,6 +253,269 @@
       },
       {
         "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+      }
+    ]
+  },
+  {
+    "street": "Crooke Avenue",
+    "city": "Olney",
+    "state": "Arizona",
+    "description": "Beautiful house with amazing views. Fully renevated, new floors, fresh paint. Great schools and location.",
+    "price": 432611,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "squareFeet": 3907,
+    "renevated": true,
+    "schoolRating": "C",
+    "dateAdded": "2018-12-17",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=753&q=80",
+        "isCover": true
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+      }
+    ]
+  },
+  {
+    "street": "Monitor Street",
+    "city": "Kapowsin",
+    "state": "Federated States Of Micronesia",
+    "description": "Beautiful house with amazing views. Fully renevated, new floors, fresh paint. Great schools and location.",
+    "price": 462668,
+    "bedrooms": 1,
+    "bathrooms": 4,
+    "squareFeet": 2398,
+    "renevated": true,
+    "schoolRating": "C",
+    "dateAdded": "2019-3-02",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1430285561322-7808604715df?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+        "isCover": true
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+      }
+    ]
+  },
+  {
+    "street": "Neptune Court",
+    "city": "Outlook",
+    "state": "Maine",
+    "description": "Beautiful house with amazing views. Fully renevated, new floors, fresh paint. Great schools and location.",
+    "price": 365926,
+    "bedrooms": 5,
+    "bathrooms": 2,
+    "squareFeet": 3347,
+    "renevated": false,
+    "schoolRating": "A",
+    "dateAdded": "2018-05-16",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=753&q=80",
+        "isCover": true
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+      }
+    ]
+  },
+  {
+    "street": "Ridge Court",
+    "city": "Tolu",
+    "state": "Indiana",
+    "description": "Beautiful house with amazing views. Fully renevated, new floors, fresh paint. Great schools and location.",
+    "price": 340445,
+    "bedrooms": 5,
+    "bathrooms": 1,
+    "squareFeet": 4089,
+    "renevated": false,
+    "schoolRating": "A",
+    "dateAdded": "2018-10-27",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1519236282064-01649736e20b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=626&q=80",
+        "isCover": true
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+      }
+    ]
+  },
+  {
+    "street": "Rewe Street",
+    "city": "Utting",
+    "state": "Louisiana",
+    "description": "Beautiful house with amazing views. Fully renevated, new floors, fresh paint. Great schools and location.",
+    "price": 175444,
+    "bedrooms": 5,
+    "bathrooms": 1,
+    "squareFeet": 1434,
+    "renevated": true,
+    "schoolRating": "B",
+    "dateAdded": "2018-08-08",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1501638758338-a7c69c3189b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=742&q=80",
+        "isCover": true
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+      }
+    ]
+  },
+  {
+    "street": "Schenck Court",
+    "city": "Dexter",
+    "state": "South Carolina",
+    "description": "Beautiful house with amazing views. Fully renevated, new floors, fresh paint. Great schools and location.",
+    "price": 336883,
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "squareFeet": 3976,
+    "renevated": true,
+    "schoolRating": "A",
+    "dateAdded": "2018-04-02",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1524431144429-03fdd30eee26?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=679&q=80",
+        "isCover": true
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+      }
+    ]
+  },
+  {
+    "street": "Dewitt Avenue",
+    "city": "Shaft",
+    "state": "New York",
+    "description": "Beautiful house with amazing views. Fully renevated, new floors, fresh paint. Great schools and location.",
+    "price": 476776,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "squareFeet": 2471,
+    "renevated": true,
+    "schoolRating": "B",
+    "dateAdded": "2019-01-30",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1519378045141-f05b62faa055?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+        "isCover": true
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+      }
+    ]
+  },
+  {
+    "street": "Whitney Avenue",
+    "city": "Smeltertown",
+    "state": "New Mexico",
+    "description": "Beautiful house with amazing views. Fully renevated, new floors, fresh paint. Great schools and location.",
+    "price": 242796,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "squareFeet": 1000,
+    "renevated": false,
+    "schoolRating": "C",
+    "dateAdded": "2019-02-21",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1534067106003-bfd2053d0888?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+        "isCover": true
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+      }
+    ]
+  },
+  {
+    "street": "Ira Court",
+    "city": "Campo",
+    "state": "New Hampshire",
+    "description": "Beautiful house with amazing views. Fully renevated, new floors, fresh paint. Great schools and location.",
+    "price": 514449,
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "squareFeet": 3708,
+    "renevated": false,
+    "schoolRating": "B",
+    "dateAdded": "2018-07-26",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1465301055284-72f355cfd745?ixlib=rb-1.2.1&auto=format&fit=crop&w=692&q=80",
+        "isCover": true
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+      }
+    ]
+  },
+  {
+    "street": "Debevoise Street",
+    "city": "Adelino",
+    "state": "Kentucky",
+    "description": "Beautiful house with amazing views. Fully renevated, new floors, fresh paint. Great schools and location.",
+    "price": 501746,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "squareFeet": 1302,
+    "renevated": false,
+    "schoolRating": "A",
+    "dateAdded": "2017-10-17",
+    "userId": 1,
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1523745663588-1bfa973c9b35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+        "isCover": true
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
       }
     ]
   }

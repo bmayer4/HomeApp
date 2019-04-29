@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -42,7 +43,8 @@ namespace HomeApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             var cs = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<AppDbContext>(o => o.UseSqlServer(cs));
+            services.AddDbContext<AppDbContext>(o => o.UseSqlServer(cs)
+             .ConfigureWarnings(warnings => warnings.Ignore(CoreEventId.IncludeIgnoredWarning)));
 
             services.AddCors();
             services.AddTransient<Seed>();  // now creatable through DI
@@ -114,7 +116,14 @@ namespace HomeApp.API
             
             app.UseCors(opts => opts.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             app.UseAuthentication();
-            app.UseMvc();
+            app.UseDefaultFiles(); 
+            app.UseStaticFiles();
+            app.UseMvc(routes => {
+                routes.MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new { controller = "Fallback", action = "Index" }
+                );
+            });
         }
     }
 }

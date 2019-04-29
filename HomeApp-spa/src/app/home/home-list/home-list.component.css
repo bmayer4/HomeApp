@@ -1,11 +1,11 @@
 .form-group label {
     font-size: .9rem;
 }
-
+ 
 .form-buttons {
     margin-top: .8rem;
     width: 100%;
-}
+} 
 
 @media (max-width: 575.98px) { 
 
@@ -14,8 +14,6 @@
     }
 
     label {
-        width: 100%;
-        justify-content: start;
         margin: .4rem 0;
     }
 
