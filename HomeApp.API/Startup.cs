@@ -46,6 +46,7 @@ namespace HomeApp.API
             services.AddDbContext<AppDbContext>(o => o.UseSqlServer(cs)
              .ConfigureWarnings(warnings => warnings.Ignore(CoreEventId.IncludeIgnoredWarning)));
 
+            services.BuildServiceProvider().GetService<AppDbContext>().Database.Migrate();
             services.AddCors();
             services.AddTransient<Seed>();  // now creatable through DI
             services.AddScoped<IHomeRepository, HomeRepository>();
